@@ -4,84 +4,17 @@ startSourceRankPercentile and endSourceRankPercentile: The parameters can be use
 '''
 
 from eventregistry import *
-
-# get URI for all credible sources
-source_uri = [
-    'bbc.com',                          # news
-    'blogs.wsj.com', 
-    'npr.org',
-    'pbs.org',
-    'abcnews.go.com',
-    'cbsnews.com',
-    'nbcnews.com',
-    'apnews.com',
-    'edition.cnn.com',
-    'nytimes.com',
-    'nypost.com',
-    'washingtonpost.com',
-    'msnbc.com',
-    'theguardian.com',
-    'bloomberg.com',
-    'newyorker.com',
-    'politico.com',
-    'foxnews.com',
-    'huffingtonpost.com',
-    'economist.com',
-    'buzzfeednews.com',
-    'vox.com',
-    'reuters.com',
-    'in.reuters.com',
-    'forbes.com',
-    'ndtv.com',
-    'timesofindia.indiatimes.com',
-    'economictimes.indiatimes.com',
-    'ibtimes.co.in',
-    'huffingtonpost.in',
-    'indiatoday.in'
-    'foxsports.com',                    # sports
-    'espn.com',
-    'nfl.com',
-    'cbssports.com',
-    'fifa.com',
-    'techcrunch.com',                   # technology
-    'wired.com',
-    'lifehacker.com',
-    'macworld.com',
-    'pcworld.com',
-    'engadget.com',
-    'readwrite.com',
-    'mashable.com',
-    'gizmodo.com',
-    'venturebeat.com',
-    'recode.net',
-    'cnet.com',
-    'howtogeek.com',
-    'entrepreneur.com',                 # business
-    'hbr.org',
-    'freakonomics.com',
-    'ritholtz.com',
-    'fortune.com',
-    'business-standard.com',
-    'businessinsider.com',
-    'foxbusiness.com',
-    'businesstimes.com.sg',
-    'factly.in',                        # fact-checking
-    'factcheck.org',
-    'snopes.com',
-    'checkyourfact.com',
-    'politifact.com',
-    'thequint.com'
-    ]
+from build_database import *
 
 
 def process_input_text(input_text):
-    
+    pass
 
 
-output_text = process_input_text(input_text)
-print(output_text)
+# output_text = process_input_text(input_text)
+# print(output_text)
 # upload input text from file/GUI/command line
-input_text = ""
+input_text = ["donald trump is using emergency funds to build his border wall"]
 
 # preprocess text
 # annotate with concepts? EventRegistry.getConceptUri()
@@ -89,8 +22,10 @@ input_text = ""
 
 # get articles from event-registry with processed text from list of credible sources URIs
 # API_KEY = "eda39267-9017-481a-860d-0b565c6d8bf3"
-API_KEY = "1d3ce38b-3606-4bb3-94b5-904df0583c3c"
-er = EventRegistry(apiKey = API_KEY)
+# API_KEY = "1d3ce38b-3606-4bb3-94b5-904df0583c3c"
+# er = EventRegistry(apiKey = API_KEY)
+
+er = EventRegistry()
 
 # print("Reminaing available requests: ", er.getRemainingAvailableRequests())
 # print("Daily available requests: ", er.getDailyAvailableRequests())
@@ -99,7 +34,7 @@ it = QueryArticlesIter(
         keywords = QueryItems.OR(input_text), # pass list of strings
         dataType = ["news", "pr", "blog"],
         keywordsLoc = "body,title",
-        sourceUri = QueryItems.OR(source_uri),
+        sourceUri = QueryItems.OR(['politifact.com']),
         lang="eng"
     )
 
@@ -120,8 +55,10 @@ res = it.execQuery(er,
                     )
                 )
 
+res_file = open("er_opt.txt", "w")
+
 for article in res['articles']['results']:
-    print(article)
+    res_file.write(article)
 
 # context and content comparison of input text and each article
 

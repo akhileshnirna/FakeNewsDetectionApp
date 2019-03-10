@@ -19,8 +19,16 @@ cd code
 python3 -m virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
+python -m spacy download en
 
 ```
+
+## Dependencies
+1. [Event Registry API](http://eventregistry.org/)
+2. [PyTextRank](https://medium.com/@aneesha/beyond-bag-of-words-using-pytextrank-to-find-phrases-and-summarize-text-f736fa3773c5)
+
+## Library Bug Fixes
+To ensure PyTextrank works as expected, follow [this link](https://github.com/DerwenAI/pytextrank/issues/15) to make necessary changes in your installation or use the virtualenv in this repository
 
 ## Team Details
 1. Akhilesh Nirna

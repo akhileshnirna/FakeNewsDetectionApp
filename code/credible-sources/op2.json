@@ -1,0 +1,145 @@
+{"count": 1, "ids": [8, 9, 10], "pos": "np", "rank": 0.04509100860239963, "text": "extreme heat waves"}
+{"count": 1, "ids": [4, 5], "pos": "np", "rank": 0.034410932281396536, "text": "bizarre pattern"}
+{"count": 16, "ids": [48], "pos": "vb", "rank": 0.028839738095185967, "text": "be"}
+{"count": 1, "ids": [6, 7], "pos": "np", "rank": 0.025839109853480324, "text": "global weather"}
+{"count": 3, "ids": [0, 32, 8, 5], "pos": "np", "rank": 0.02570712606126232, "text": "the pacific extreme pattern"}
+{"count": 7, "ids": [9], "pos": "nn", "rank": 0.022545504301199816, "text": "heat"}
+{"count": 3, "ids": [9, 10], "pos": "np", "rank": 0.022545504301199816, "text": "heat waves"}
+{"count": 6, "ids": [10], "pos": "nn", "rank": 0.02228730305545468, "text": "wave"}
+{"count": 2, "ids": [0, 13, 14], "pos": "np", "rank": 0.01881328929242886, "text": "the eastern us"}
+{"count": 1, "ids": [67, 68], "pos": "np", "rank": 0.01722053492384315, "text": "little rain"}
+{"count": 1, "ids": [124, 125, 10, 126], "pos": "np", "rank": 0.016234752619015948, "text": "anomalous atmospheric wave train"}
+{"count": 1, "ids": [20, 21], "pos": "np", "rank": 0.015049160671063506, "text": "new study"}
+{"count": 1, "ids": [65, 9], "pos": "np", "rank": 0.015030336200799877, "text": "oppressive heat"}
+{"count": 1, "ids": [30], "pos": "np", "rank": 0.014181065637308839, "text": "event"}
+{"count": 2, "ids": [45], "pos": "np", "rank": 0.013691170228607111, "text": "region"}
+{"count": 5, "ids": [7], "pos": "nn", "rank": 0.012919554926740162, "text": "weather"}
+{"count": 1, "ids": [7, 53], "pos": "np", "rank": 0.012919554926740162, "text": "weather effects"}
+{"count": 4, "ids": [32, 8, 5], "pos": "np", "rank": 0.01285356303063116, "text": "pacific extreme pattern"}
+{"count": 1, "ids": [28, 5], "pos": "np", "rank": 0.012486260244765275, "text": "predictable pattern"}
+{"count": 1, "ids": [121, 122, 123], "pos": "np", "rank": 0.012142392161329842, "text": "hot days-precipitation deficits"}
+{"count": 4, "ids": [8], "pos": "nnp", "rank": 0.011844190940178788, "text": "extreme"}
+{"count": 1, "ids": [86, 87], "pos": "np", "rank": 0.011660149425435579, "text": "long-range prediction"}
+{"count": 1, "ids": [8, 9], "pos": "np", "rank": 0.011272752150599908, "text": "extreme heat"}
+{"count": 2, "ids": [19], "pos": "vbz", "rank": 0.011198778554409523, "text": "comes"}
+{"count": 1, "ids": [92, 85], "pos": "np", "rank": 0.011169508715169335, "text": "other kinds"}
+{"count": 1, "ids": [59, 60, 61], "pos": "np", "rank": 0.010742064581207649, "text": "high pressure zone"}
+{"count": 1, "ids": [63, 64], "pos": "np", "rank": 0.010353677047274952, "text": "clear skies"}
+{"count": 2, "ids": [18], "pos": "vbp", "rank": 0.010186056622660504, "text": "do"}
+{"count": 1, "ids": [36, 37], "pos": "np", "rank": 0.009614891677308047, "text": "hawaii experiences"}
+{"count": 4, "ids": [13, 14], "pos": "np", "rank": 0.00940664464621443, "text": "eastern us"}
+{"count": 1, "ids": [130], "pos": "np", "rank": 0.008984870737527321, "text": "summer"}
+{"count": 1, "ids": [7, 72], "pos": "np", "rank": 0.008613036617826775, "text": "weather data"}
+{"count": 2, "ids": [68], "pos": "nn", "rank": 0.008610267461921575, "text": "rain"}
+{"count": 1, "ids": [115, 68], "pos": "np", "rank": 0.008610267461921575, "text": "low rain"}
+{"count": 1, "ids": [75, 76], "pos": "np", "rank": 0.008602243768942273, "text": "strong predictor"}
+{"count": 3, "ids": [32], "pos": "np", "rank": 0.008569042020420772, "text": "pacific"}
+{"count": 2, "ids": [69], "pos": "nn", "rank": 0.008350492427609817, "text": "east"}
+{"count": 2, "ids": [126], "pos": "nn", "rank": 0.008117376309507974, "text": "train"}
+{"count": 1, "ids": [38, 39], "pos": "np", "rank": 0.008004402092526005, "text": "unusual temperatures"}
+{"count": 2, "ids": [21], "pos": "np", "rank": 0.007524580335531753, "text": "study"}
+{"count": 2, "ids": [24, 25], "pos": "np", "rank": 0.007384034609024114, "text": "nature geoscience"}
+{"count": 1, "ids": [106], "pos": "np", "rank": 0.007197306596427551, "text": "sense"}
+{"count": 4, "ids": [2], "pos": "vb", "rank": 0.00713739281103632, "text": "have"}
+{"count": 1, "ids": [92, 8, 7, 30], "pos": "np", "rank": 0.0070905328186544195, "text": "other extreme weather events"}
+{"count": 1, "ids": [33, 34], "pos": "np", "rank": 0.006922789973790701, "text": "large area"}
+{"count": 1, "ids": [38, 39, 5], "pos": "np", "rank": 0.006882186456279306, "text": "unusual temperature patterns"}
+{"count": 1, "ids": [0, 99, 100], "pos": "np", "rank": 0.00687513444671156, "text": "the associated press"}
+{"count": 1, "ids": [104], "pos": "np", "rank": 0.006872493800003563, "text": "results"}
+{"count": 1, "ids": [0, 0, 0, 29], "pos": "np", "rank": 0.0068527845720932415, "text": "40 to 50 days"}
+{"count": 1, "ids": [58, 13, 45], "pos": "np", "rank": 0.006845585114303556, "text": "inland eastern region"}
+{"count": 1, "ids": [59, 80], "pos": "np", "rank": 0.006839547267104353, "text": "high population"}
+{"count": 1, "ids": [95, 96], "pos": "np", "rank": 0.006768981522527846, "text": "victor gensini"}
+{"count": 2, "ids": [52], "pos": "vbg", "rank": 0.006614586469325035, "text": "creating"}
+{"count": 1, "ids": [83], "pos": "np", "rank": 0.0066091337433765536, "text": "breadbaskets"}
+{"count": 1, "ids": [8, 7, 87], "pos": "np", "rank": 0.006459777463370081, "text": "extreme weather prediction"}
+{"count": 1, "ids": [32, 35], "pos": "np", "rank": 0.00642678151531558, "text": "pacific north"}
+{"count": 3, "ids": [14], "pos": "np", "rank": 0.00627109643080962, "text": "us"}
+{"count": 1, "ids": [27], "pos": "vbp", "rank": 0.006132450066010434, "text": "arise"}
+{"count": 1, "ids": [123], "pos": "nns", "rank": 0.006071196080664921, "text": "deficits"}
+{"count": 1, "ids": [73], "pos": "nns", "rank": 0.006016013926171501, "text": "sensors"}
+{"count": 1, "ids": [23], "pos": "np", "rank": 0.005916373669970368, "text": "today"}
+{"count": 2, "ids": [87], "pos": "nn", "rank": 0.0058300747127177895, "text": "prediction"}
+{"count": 1, "ids": [5], "pos": "np", "rank": 0.0057351553802327555, "text": "pattern"}
+{"count": 1, "ids": [120], "pos": "np", "rank": 0.00561962543425097, "text": "precursors"}
+{"count": 2, "ids": [85], "pos": "nns", "rank": 0.0055847543575846675, "text": "kinds"}
+{"count": 1, "ids": [26], "pos": "vbz", "rank": 0.005573024069594372, "text": "reveals"}
+{"count": 1, "ids": [43, 44], "pos": "np", "rank": 0.005569319209819442, "text": "southern part"}
+{"count": 1, "ids": [53], "pos": "np", "rank": 0.005567494347871488, "text": "effect"}
+{"count": 1, "ids": [128], "pos": "vb", "rank": 0.005360245722307593, "text": "want"}
+{"count": 1, "ids": [36], "pos": "np", "rank": 0.005334245542841659, "text": "hawaii"}
+{"count": 1, "ids": [114], "pos": "nn", "rank": 0.005179276397251403, "text": "combination"}
+{"count": 1, "ids": [64], "pos": "nns", "rank": 0.005176838523637476, "text": "skies"}
+{"count": 1, "ids": [21, 113], "pos": "np", "rank": 0.005016386890354501, "text": "study emphasize"}
+{"count": 1, "ids": [88], "pos": "vbg", "rank": 0.004950972688564742, "text": "lifesaving"}
+{"count": 1, "ids": [108], "pos": "np", "rank": 0.00494643723457518, "text": "skill"}
+{"count": 3, "ids": [37], "pos": "vb", "rank": 0.004807445838654023, "text": "experience"}
+{"count": 1, "ids": [62], "pos": "vbz", "rank": 0.004798055552405463, "text": "brings"}
+{"count": 1, "ids": [129], "pos": "vbg", "rank": 0.004751235994024769, "text": "riding"}
+{"count": 1, "ids": [109], "pos": "vbd", "rank": 0.0045755036710077865, "text": "demonstrated"}
+{"count": 1, "ids": [81, 82, 45], "pos": "np", "rank": 0.0045637234095357035, "text": "many agricultural regions"}
+{"count": 1, "ids": [54], "pos": "vbp", "rank": 0.004438713818401446, "text": "sweep"}
+{"count": 1, "ids": [61], "pos": "nn", "rank": 0.004434780529501442, "text": "zone"}
+{"count": 1, "ids": [60], "pos": "nn", "rank": 0.004427215044578318, "text": "pressure"}
+{"count": 1, "ids": [76], "pos": "nn", "rank": 0.004301069310567074, "text": "predictor"}
+{"count": 1, "ids": [12], "pos": "vbd", "rank": 0.004207678913586303, "text": "hit"}
+{"count": 1, "ids": [119], "pos": "vbn", "rank": 0.004184528412180118, "text": "identified"}
+{"count": 1, "ids": [66], "pos": "vbn", "rank": 0.004050495867781361, "text": "intensified"}
+{"count": 1, "ids": [31], "pos": "vbd", "rank": 0.00404443317183769, "text": "called"}
+{"count": 2, "ids": [39], "pos": "nn", "rank": 0.0040022010462630025, "text": "temperature"}
+{"count": 1, "ids": [122], "pos": "nns", "rank": 0.003927248571038368, "text": "days-precipitation"}
+{"count": 1, "ids": [84], "pos": "nn", "rank": 0.003840243700072149, "text": "nation"}
+{"count": 1, "ids": [0, 131], "pos": "np", "rank": 0.003795949420105113, "text": "seven weeks"}
+{"count": 1, "ids": [11], "pos": "nn", "rank": 0.003737355483167249, "text": "one"}
+{"count": 1, "ids": [72], "pos": "nns", "rank": 0.003711298818239426, "text": "data"}
+{"count": 1, "ids": [118], "pos": "vbp", "rank": 0.003709386617744883, "text": "link"}
+{"count": 1, "ids": [25], "pos": "nn", "rank": 0.003692017304512057, "text": "geoscience"}
+{"count": 1, "ids": [34], "pos": "nn", "rank": 0.0034613949868953506, "text": "area"}
+{"count": 1, "ids": [100], "pos": "nnp", "rank": 0.00343756722335578, "text": "press"}
+{"count": 1, "ids": [99, 100], "pos": "np", "rank": 0.00343756722335578, "text": "associated press"}
+{"count": 4, "ids": [29], "pos": "nns", "rank": 0.0034263922860466207, "text": "days"}
+{"count": 3, "ids": [0, 29], "pos": "np", "rank": 0.0034263922860466207, "text": "50 days"}
+{"count": 1, "ids": [80], "pos": "nn", "rank": 0.0034197736335521765, "text": "population"}
+{"count": 1, "ids": [70], "pos": "np", "rank": 0.0033971121075307507, "text": "researchers"}
+{"count": 1, "ids": [96], "pos": "nnp", "rank": 0.003384490761263923, "text": "gensini"}
+{"count": 1, "ids": [93, 94, 70, 95, 96], "pos": "np", "rank": 0.003384490761263923, "text": "tornado forecasting researcher victor gensini"}
+{"count": 1, "ids": [24], "pos": "nnp", "rank": 0.0033017555679552392, "text": "nature"}
+{"count": 1, "ids": [13], "pos": "np", "rank": 0.0029461720264249477, "text": "eastern"}
+{"count": 1, "ids": [101, 102], "pos": "np", "rank": 0.0029392763572600148, "text": "physical mechanisms"}
+{"count": 1, "ids": [77], "pos": "vbz", "rank": 0.0028592009703869836, "text": "emerges"}
+{"count": 2, "ids": [44], "pos": "nn", "rank": 0.002784659604909721, "text": "part"}
+{"count": 1, "ids": [50, 44], "pos": "np", "rank": 0.002784659604909721, "text": "northeastern part"}
+{"count": 2, "ids": [46], "pos": "vbz", "rank": 0.0026939942120048107, "text": "gets"}
+{"count": 1, "ids": [132], "pos": "vb", "rank": 0.0026447842669356106, "text": "prepare"}
+{"count": 1, "ids": [56], "pos": "vb", "rank": 0.0026302368658794426, "text": "stop"}
+{"count": 1, "ids": [97], "pos": "vbn", "rank": 0.00247321861728759, "text": "involved"}
+{"count": 1, "ids": [22], "pos": "vbn", "rank": 0.002383441122213865, "text": "published"}
+{"count": 1, "ids": [3], "pos": "vbn", "rank": 0.002336315185479128, "text": "discovered"}
+{"count": 1, "ids": [111], "pos": "nns", "rank": 0.0022805983790258775, "text": "linkages"}
+{"count": 1, "ids": [103], "pos": "vbg", "rank": 0.0020942885165412283, "text": "underpinning"}
+{"count": 1, "ids": [1], "pos": "np", "rank": 0.0020625954064068725, "text": "scientists"}
+{"count": 1, "ids": [117], "pos": "vbn", "rank": 0.0020049888018116484, "text": "presented"}
+{"count": 1, "ids": [95], "pos": "nnp", "rank": 0.0019873355890918515, "text": "victor"}
+{"count": 1, "ids": [98], "pos": "vbd", "rank": 0.001945100646787294, "text": "told"}
+{"count": 1, "ids": [105], "pos": "vbp", "rank": 0.001945100646787294, "text": "make"}
+{"count": 1, "ids": [113], "pos": "nn", "rank": 0.001945100646787294, "text": "emphasize"}
+{"count": 1, "ids": [41], "pos": "nn", "rank": 0.0019079786540565787, "text": "surface"}
+{"count": 1, "ids": [91], "pos": "nn", "rank": 0.0019079786540565787, "text": "way"}
+{"count": 1, "ids": [131], "pos": "nns", "rank": 0.0018979747100525564, "text": "weeks"}
+{"count": 1, "ids": [35], "pos": "nn", "rank": 0.0018716666684525855, "text": "north"}
+{"count": 1, "ids": [99], "pos": "nnp", "rank": 0.0018580740289166767, "text": "associated"}
+{"count": 1, "ids": [102], "pos": "nns", "rank": 0.0014696381786300074, "text": "mechanisms"}
+{"count": 1, "ids": [110], "pos": "nn", "rank": 0.0014696381786300074, "text": "hope"}
+{"count": 1, "ids": [94], "pos": "nn", "rank": 0.0013235246868211503, "text": "forecasting"}
+{"count": 1, "ids": [71], "pos": "vbd", "rank": 0.0013200772385299122, "text": "examined"}
+{"count": 1, "ids": [15], "pos": "vbg", "rank": 0.0010312977032034363, "text": "leaving"}
+{"count": 1, "ids": [40], "pos": "nn", "rank": 0.0010312977032034363, "text": "water"}
+{"count": 1, "ids": [74], "pos": "vbg", "rank": 0.0010312977032034363, "text": "finding"}
+{"count": 2, "ids": [78], "pos": "nn", "rank": 0.0010312977032034363, "text": "chance"}
+{"count": 2, "ids": [79], "pos": "vbz", "rank": 0.0010312977032034363, "text": "gives"}
+{"count": 1, "ids": [90], "pos": "vb", "rank": 0.0010312977032034363, "text": "pave"}
+{"count": 1, "ids": [93], "pos": "nnp", "rank": 0.0010312977032034363, "text": "tornado"}
+{"count": 1, "ids": [112], "pos": "nns", "rank": 0.0010312977032034363, "text": "authors"}
+{"count": 1, "ids": [127], "pos": "nn", "rank": 0.0010312977032034363, "text": "occurrence"}
+{"count": 1, "ids": [0], "pos": "np", "rank": 0.0, "text": "2012"}
+{"count": 1, "ids": [0, 0, 0, 0], "pos": "np", "rank": 0.0, "text": "between 1982 to 2015"}
