@@ -5,24 +5,17 @@ startSourceRankPercentile and endSourceRankPercentile: The parameters can be use
 
 from eventregistry import *
 from build_database import *
+from process_text import *
+from datetime import datetime
 
-
-def process_input_text(input_text):
-    pass
-
-
-# output_text = process_input_text(input_text)
-# print(output_text)
 # upload input text from file/GUI/command line
-input_text = ["donald trump is using emergency funds to build his border wall"]
+phrases = find_phrases()
 
-# preprocess text
-# annotate with concepts? EventRegistry.getConceptUri()
-# processed_text_list = input_text.split(".")
-
+'''
 # get articles from event-registry with processed text from list of credible sources URIs
 # API_KEY = "eda39267-9017-481a-860d-0b565c6d8bf3"
 # API_KEY = "1d3ce38b-3606-4bb3-94b5-904df0583c3c"
+API_KEY = "c40d087b-97be-4617-9008-19d209368072"
 # er = EventRegistry(apiKey = API_KEY)
 
 er = EventRegistry()
@@ -31,17 +24,18 @@ er = EventRegistry()
 # print("Daily available requests: ", er.getDailyAvailableRequests())
 
 it = QueryArticlesIter(
-        keywords = QueryItems.OR(input_text), # pass list of strings
+        keywords = QueryItems.OR(phrases),
         dataType = ["news", "pr", "blog"],
         keywordsLoc = "body,title",
-        sourceUri = QueryItems.OR(['politifact.com']),
-        lang="eng"
+        sourceUri = QueryItems.OR(source_uri),
+        lang="eng",
+        dateStart = datetime(2019, 1, 1)
     )
 
 print("Total articles retrieved: ", it.count(er))
 res = it.execQuery(er, 
                     sortBy = "rel", # sourceAlexaGlobalRank, socialScore, sourceImportance
-                    maxItems = 10,
+                    # maxItems = 10,
                     returnInfo = ReturnInfo(
                         articleInfo = ArticleInfoFlags(
                             links = True,
@@ -55,7 +49,7 @@ res = it.execQuery(er,
                     )
                 )
 
-res_file = open("er_opt.txt", "w")
+res_file = open("./results/er_opt.txt", "w")
 
 for article in res['articles']['results']:
     res_file.write(article)
@@ -66,3 +60,6 @@ for article in res['articles']['results']:
 
 # output result
 print('done')
+'''
+
+print(len(source_uri))
