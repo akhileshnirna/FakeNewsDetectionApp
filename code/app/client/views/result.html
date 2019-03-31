@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h2>Credible Sources</h2>
+    <p>explanation comes here...</p>
+
+    <h2>Claim: </h2> <p>{{claim}}</p>
+
+    <table style="border:1px solid black; width: auto; height: auto;">
+        <tr>
+            <th>Source</th>
+            <th>Article Title</th>
+            <th>ML Result</th>
+            <th>Cortical Result (Jaccard Distance)</th>
+        </tr>
+
+        {% for article in data %}
+        <tr>
+            <td>
+                <a href="{{article.source_url}}"> {{article.source}} </a>
+            </td>
+            <td>
+                <a href="{{article.article_url}}"> {{article.article_title}} </a>
+            </td>
+            <td>
+                {{article.credibility_score}}
+            </td>
+            <td>
+                {{article.cortical_semantic_score.jaccardDistance}}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    {% endblock %}
+  </body>
+</html>

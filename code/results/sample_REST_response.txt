@@ -1,0 +1,229 @@
+hardik:~ $ curl http://localhost:5000/credible/ -d "claim_text=trump is not the president of the united states of america" -X POST -v
+Note: Unnecessary use of -X or --request, POST is already inferred.
+*   Trying ::1...
+* TCP_NODELAY set
+* Connection failed
+* connect to ::1 port 5000 failed: Connection refused
+*   Trying 127.0.0.1...
+* TCP_NODELAY set
+* Connected to localhost (127.0.0.1) port 5000 (#0)
+> POST /credible/ HTTP/1.1
+> Host: localhost:5000
+> User-Agent: curl/7.54.0
+> Accept: */*
+> Content-Length: 69
+> Content-Type: application/x-www-form-urlencoded
+> 
+* upload completely sent off: 69 out of 69 bytes
+* HTTP 1.0, assume close after body
+< HTTP/1.0 200 OK
+< Content-Type: application/json
+< Content-Length: 9685
+< Server: Werkzeug/0.15.0 Python/3.7.1
+< Date: Sun, 31 Mar 2019 12:31:21 GMT
+< 
+{
+    "results": [
+        {
+            "article_title": "The best letters from our readers in 2018",
+            "article_url": "https://www.economist.com/letters/2018/12/28/the-best-letters-from-our-readers-in-2018",
+            "source": "The Economist",
+            "source_url": "economist.com",
+            "source_ranking": 23,
+            "sentiment": 0.08235294117647052,
+            "credibility_score": 0.6358710527420044,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.2964436964928172,
+                "jaccardDistance": 0.8285123966942148,
+                "overlappingAll": 249,
+                "overlappingLeftRight": 0.3472803347280335,
+                "overlappingRightLeft": 0.2530487804878049,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 36.698705090628344,
+                "euclideanDistance": 0.7072310405643739
+            }
+        },
+        {
+            "article_title": "In trade wars of 200 years ago, the pirates were Americans",
+            "article_url": "https://www.foxbusiness.com/markets/in-trade-wars-of-200-years-ago-the-pirates-were-americans",
+            "source": "Fox Business",
+            "source_url": "foxbusiness.com",
+            "source_ranking": 31,
+            "sentiment": 0.01960784313725483,
+            "credibility_score": 0.03216676786541939,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.24048846060863083,
+                "jaccardDistance": 0.8652434956637759,
+                "overlappingAll": 202,
+                "overlappingLeftRight": 0.28172942817294283,
+                "overlappingRightLeft": 0.20528455284552846,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 27.452599295722653,
+                "euclideanDistance": 0.7624926513815403
+            }
+        },
+        {
+            "article_title": "US to China: Don't steal trade secrets the way we used to do",
+            "article_url": "https://apnews.com/b40414d22f2248428ce11ff36b88dc53",
+            "source": "AP NEWS",
+            "source_url": "apnews.com",
+            "source_ranking": 100,
+            "sentiment": 0.01960784313725483,
+            "credibility_score": 0.936520516872406,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.23810738674121865,
+                "jaccardDistance": 0.8667554963357762,
+                "overlappingAll": 200,
+                "overlappingLeftRight": 0.2789400278940028,
+                "overlappingRightLeft": 0.2032520325203252,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 27.28011665278559,
+                "euclideanDistance": 0.7648442092886537
+            }
+        },
+        {
+            "article_title": "Howard Schultz on big business, socialism, and the presidential potential of Joe Biden and Alexandria Ocasio-Cortez",
+            "article_url": "https://www.businessinsider.com/howard-schultz-on-joe-biden-alexandria-ocasio-cortez-2019-3",
+            "source": "Business Insider",
+            "source_url": "businessinsider.com",
+            "source_ranking": 15,
+            "sentiment": 0.1607843137254903,
+            "credibility_score": 0.7563244104385376,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.23334523900639426,
+                "jaccardDistance": 0.8697674418604651,
+                "overlappingAll": 196,
+                "overlappingLeftRight": 0.2733612273361227,
+                "overlappingRightLeft": 0.1991869918699187,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 28.334735911577035,
+                "euclideanDistance": 0.7695473251028807
+            }
+        },
+        {
+            "article_title": "South of the Wall, North of the Border: Life in Texas' No Man's Land",
+            "article_url": "https://www.nytimes.com/2019/03/27/us/border-wall-texas-no-mans-land.html",
+            "source": "The New York Times",
+            "source_url": "nytimes.com",
+            "source_ranking": 1,
+            "sentiment": 0.04313725490196085,
+            "credibility_score": 0.8656009435653687,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.26668027315016485,
+                "jaccardDistance": 0.8483412322274881,
+                "overlappingAll": 224,
+                "overlappingLeftRight": 0.3124128312412831,
+                "overlappingRightLeft": 0.22764227642276422,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 31.14975704821925,
+                "euclideanDistance": 0.7366255144032922
+            }
+        },
+        {
+            "article_title": "What Students Are Saying About the College Admissions Cheating Scandal",
+            "article_url": "https://www.nytimes.com/2019/03/21/learning/what-students-are-saying-about-the-college-admissions-cheating-scandal.html",
+            "source": "The New York Times",
+            "source_url": "nytimes.com",
+            "source_ranking": 1,
+            "sentiment": null,
+            "credibility_score": 0.642024040222168,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.18453322472444444,
+                "jaccardDistance": 0.8997412677878396,
+                "overlappingAll": 155,
+                "overlappingLeftRight": 0.21617852161785217,
+                "overlappingRightLeft": 0.15752032520325204,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 20.592060411641008,
+                "euclideanDistance": 0.8177542621987066
+            }
+        },
+        {
+            "article_title": "North America Proppants Market Growth, Trends, and Forecast Report 2019-2024 - ResearchAndMarkets.com",
+            "article_url": "https://apnews.com/Business%20Wire/8ad374049b7741baad6558dbe88cea79",
+            "source": "AP NEWS",
+            "source_url": "apnews.com",
+            "source_ranking": 100,
+            "sentiment": 0.2392156862745098,
+            "credibility_score": 0.9695834517478943,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.13334013657508242,
+                "jaccardDistance": 0.9295154185022027,
+                "overlappingAll": 112,
+                "overlappingLeftRight": 0.15620641562064155,
+                "overlappingRightLeft": 0.11382113821138211,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 13.825257453157631,
+                "euclideanDistance": 0.868312757201646
+            }
+        },
+        {
+            "article_title": "Perspective | A new Cold War? Not quite.",
+            "article_url": "https://www.washingtonpost.com/outlook/2019/03/21/new-cold-war-not-quite/",
+            "source": "Washington Post",
+            "source_url": "washingtonpost.com",
+            "source_ranking": 6,
+            "sentiment": -0.05098039215686279,
+            "credibility_score": 0.8716733455657959,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.25596544074681005,
+                "jaccardDistance": 0.8553162853297442,
+                "overlappingAll": 215,
+                "overlappingLeftRight": 0.299860529986053,
+                "overlappingRightLeft": 0.2184959349593496,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 32.96605084096276,
+                "euclideanDistance": 0.7472075249853029
+            }
+        },
+        {
+            "article_title": "Rick Steves Wants to Save the World, One Vacation at a Time",
+            "article_url": "https://www.nytimes.com/interactive/2019/03/20/magazine/rick-steves-travel-world.html",
+            "source": "The New York Times",
+            "source_url": "nytimes.com",
+            "source_ranking": 1,
+            "sentiment": -0.05098039215686279,
+            "credibility_score": 0.9268850088119507,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.18810483552556273,
+                "jaccardDistance": 0.8976020738820479,
+                "overlappingAll": 158,
+                "overlappingLeftRight": 0.2203626220362622,
+                "overlappingRightLeft": 0.16056910569105692,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 20.50576428930534,
+                "euclideanDistance": 0.8142269253380364
+            }
+        },
+        {
+            "article_title": "Opinion | America's days as a superpower may be numbered  --  because of Trump",
+            "article_url": "https://www.washingtonpost.com/opinions/americas-days-as-a-superpower-may-be-numbered--because-of-trump/2019/03/20/ae15c924-4a82-11e9-93d0-64dbcf38ba41_story.html",
+            "source": "Washington Post",
+            "source_url": "washingtonpost.com",
+            "source_ranking": 6,
+            "sentiment": 0.2,
+            "credibility_score": 0.8631956577301025,
+            "cortical_semantic_score": {
+                "cosineSimilarity": 0.3154922874321147,
+                "jaccardDistance": 0.8154596100278552,
+                "overlappingAll": 265,
+                "overlappingLeftRight": 0.3695955369595537,
+                "overlappingRightLeft": 0.2693089430894309,
+                "sizeLeft": 717,
+                "sizeRight": 984,
+                "weightedScoring": 40.5839520511516,
+                "euclideanDistance": 0.6884185773074663
+            }
+        }
+    ],
+    "uid": "ea3fc678-a7fc-4049-ad92-93c62fd94d7e"
+}

@@ -64,7 +64,7 @@ class CredibleResources(Resource):
 
 
 # setup API resource routing
-api.add_resource(CredibleResources, '/credible/')
+api.add_resource(CredibleResources, '/credible')
 
 if __name__ == '__main__':
     app.run(debug=True)
