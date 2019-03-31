@@ -1,0 +1,61 @@
+news:
+
+bbc
+wall street journal
+npr
+pbs
+abc news
+cbs news
+nbc news
+cnn
+new york times
+washington post
+msnbc
+the guardian
+bloomberg
+the newyorker
+politico
+fox news
+huffington post
+the economist
+buzzfeed
+ndtv
+politifact
+New York Post
+Vox.com
+
+
+sports:
+
+ESPN
+NFL.com
+Fox Sports
+CBS Sports
+Fifa.com
+
+
+technology:
+
+Techcrunch
+Wired
+MacWorld
+PCWorld
+LifeHacker
+Engadget.com
+ReadWrite
+Mashable
+Gizmodo
+VentureBeat
+Recode.net
+CNet.com
+HowToGeek
+
+
+business:
+
+Entrepeneur.com
+Harvard Business
+Freakonomics
+The Big Picture
+Fortune
+Business Insider

@@ -1,0 +1,2 @@
+EventRegistry API key: c40d087b-97be-4617-9008-19d209368072
+Cortical.io API key: 79a39910-4ff4-11e9-8f72-af685da1b20e

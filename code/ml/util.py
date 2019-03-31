@@ -1,0 +1,70 @@
+EVENT_REGISTRY_API_KEY = "c40d087b-97be-4617-9008-19d209368072"
+CORTICAL_API_KEY = "79a39910-4ff4-11e9-8f72-af685da1b20e"
+
+# get URI for all credible sources
+source_uri = [
+    'bbc.com',                          # news
+    'blogs.wsj.com', 
+    'npr.org',
+    'pbs.org',
+    'abcnews.go.com',
+    'cbsnews.com',
+    'nbcnews.com',
+    'apnews.com',
+    'edition.cnn.com',
+    'nytimes.com',
+    'nypost.com',
+    'washingtonpost.com',
+    'msnbc.com',
+    'theguardian.com',
+    'bloomberg.com',
+    'newyorker.com',
+    'politico.com',
+    'foxnews.com',
+    'huffingtonpost.com',
+    'economist.com',
+    'buzzfeednews.com',
+    'vox.com',
+    'reuters.com',
+    'in.reuters.com',
+    'forbes.com',
+    'ndtv.com',
+    'timesofindia.indiatimes.com',
+    'economictimes.indiatimes.com',
+    'ibtimes.co.in',
+    'huffingtonpost.in',
+    'indiatoday.in'
+    'foxsports.com',                    # sports
+    'espn.com',
+    'nfl.com',
+    'cbssports.com',
+    'fifa.com',
+    'techcrunch.com',                   # technology
+    'wired.com',
+    'lifehacker.com',
+    'macworld.com',
+    'pcworld.com',
+    'engadget.com',
+    'readwrite.com',
+    'mashable.com',
+    'gizmodo.com',
+    'venturebeat.com',
+    'recode.net',
+    'cnet.com',
+    'howtogeek.com',
+    'entrepreneur.com',                 # business
+    'hbr.org',
+    'freakonomics.com',
+    'ritholtz.com',
+    'fortune.com',
+    'business-standard.com',
+    'businessinsider.com',
+    'foxbusiness.com',
+    'businesstimes.com.sg',
+    'factly.in',                        # fact-checking
+    'factcheck.org',
+    'snopes.com',
+    'checkyourfact.com',
+    'politifact.com',
+    'thequint.com'
+    ]
