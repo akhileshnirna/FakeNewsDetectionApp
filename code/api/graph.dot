@@ -1,0 +1,14 @@
+digraph {
+	trump [label="trump 0.065"]
+	be [label="be 0.121"]
+	president [label="president 0.168"]
+	united [label="united 0.208"]
+	state [label="state 0.154"]
+	america [label="america 0.284"]
+	trump -> be [constraint=false]
+	be -> president [constraint=false]
+	president -> united [constraint=false]
+	united -> state [constraint=false]
+	united -> america [constraint=false]
+	state -> america [constraint=false]
+}

@@ -3,6 +3,7 @@ from eventregistry import *
 import json
 import os
 import pickle
+import tensorflow as tf
 from uuid import uuid4
 from nltk import download
 from nltk.corpus import stopwords 
@@ -11,6 +12,7 @@ download('stopwords')
 download('punkt')
 
 import numpy as np
+from datetime import datetime
 from sklearn.model_selection import train_test_split 
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
@@ -21,22 +23,6 @@ import retinasdk
 from ml.util import *
 
 class CredibleResourcesModel(object):        
-    def fit_tokenizer(self):
-        X_train, X_test, y_train, y_test = train_test_split(self._train_data, self._train_labels, test_size=0.2, random_state=101)
-        X_train_headlines = [i[0] for i in X_train]
-        X_train_articles = [i[1] for i in X_train]
-        X_test_headlines = [i[0] for i in X_test]
-        X_test_articles = [i[1] for i in X_test]
-
-        max_features = 20000
-        tokenizer = Tokenizer(num_words=max_features)
-
-        # fit headline
-        tokenizer.fit_on_texts(X_train_headlines + X_train_articles)
-
-        # store tokenizer
-        return tokenizer
-
     def __init__(self):
         self._sources = source_uri
         self._er = EventRegistry(apiKey = EVENT_REGISTRY_API_KEY)
@@ -44,8 +30,9 @@ class CredibleResourcesModel(object):
         self._uid = str(uuid4())
 
         self._clfPath = '../ml/models/glove100d.hdf5'
-        self._model = load_model(self._clfPath)
-
+        
+        self.model = load_model(self._clfPath)
+        self.graph = tf.get_default_graph()
 
         self._preload_path = "../ml/data/data_dump_glove.data"
         self._dataset = pickle.load(open(self._preload_path, "rb"))
@@ -57,20 +44,20 @@ class CredibleResourcesModel(object):
     
     def find_phrases(self, claim_text):
         # file paths
-        ip = "./data/input_" + self._uid + ".json"
-        op1 = "./data/op1_" + self._uid + ".json"
-        op2 = "./data/op2_" + self._uid + ".json"
-        op3 = "./data/op3_" + self._uid + ".json"
+        ip = "../ml/data/input_" + self._uid + ".json"
+        op1 = "../ml/data/op1_" + self._uid + ".json"
+        op2 = "../ml/data/op2_" + self._uid + ".json"
+        op3 = "../ml/data/op3_" + self._uid + ".json"
 
         # write claim to file - used by pytextrank
-        with open(ip, 'w') as f:
+        with open(ip, 'w+') as f:
             inp = {}
             inp["id"] = self._uid
             inp["text"] = claim_text
             json.dump(inp, f)
 
         # Perform statistical parsing/tagging on a document in JSON format
-        with open(op1, 'w') as f:
+        with open(op1, 'w+') as f:
             for graf in parse_doc(json_iter(ip)):
                 f.write("%s\n" % pretty_print(graf._asdict()))
 
@@ -78,7 +65,7 @@ class CredibleResourcesModel(object):
         graph, ranks = text_rank(op1)
         render_ranks(graph, ranks)
 
-        with open(op2, 'w') as f:
+        with open(op2, 'w+') as f:
             for rl in normalize_key_phrases(op1, ranks):
                 f.write("%s\n" % pretty_print(rl._asdict()))
 
@@ -156,28 +143,46 @@ class CredibleResourcesModel(object):
         data["uid"] = self._uid
         data["articles"] = []
         for art in res:
-            data["articles"].append(json.dumps(art))
+            data["articles"].append(art)
         
         # append collected data to file to build corpus
-        store_corpus(data)
+        # self.store_corpus(data)
 
         return data
 
     def get_tokenizer(self):
         return self._tokenizer
     
-    def preprocess(self, claim_text):
-        # padding
-        max_words_headline = 70
-        max_words_article = 1000
+    def fit_tokenizer(self):
+        X_train, X_test, y_train, y_test = train_test_split(self._train_data, self._train_labels, test_size=0.2, random_state=101)
+        X_train_headlines = [i[0] for i in X_train]
+        X_train_articles = [i[1] for i in X_train]
+        X_test_headlines = [i[0] for i in X_test]
+        X_test_articles = [i[1] for i in X_test]
 
-        claim_text_seq = self._tokenizer.texts_to_sequences([claim_text])
-        claim_text_seq = sequence.pad_sequences(claim_text_seq, maxlen=max_words_headline)
+        max_features = 20000
+        tokenizer = Tokenizer(num_words=max_features)
 
-        return claim_text_seq
+        # fit headline
+        tokenizer.fit_on_texts(X_train_headlines + X_train_articles)
+
+        # store tokenizer
+        return tokenizer
     
-    def predict(self, seq_list):
-        return self._model.predict(seq_list)
+    def preprocess(self, tokenize_text, max_words):
+        # padding
+        # max_words_headline = 70
+        # max_words_article = 1000
+
+        text_seq = self._tokenizer.texts_to_sequences([tokenize_text])
+        text_seq = sequence.pad_sequences(text_seq, maxlen=max_words)
+
+        return text_seq
+    
+    def predict(self, claim_text_seq, credible_text_seq):
+        with self.graph.as_default():
+            pred = self.model.predict([claim_text_seq, credible_text_seq])
+        return pred
     
     def semantic_similarity(self, claim_text, article_text):
         # returns an object of metric class

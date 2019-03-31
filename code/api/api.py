@@ -20,6 +20,10 @@ parser = reqparse.RequestParser()
 parser.add_argument('claim_text')
 
 class CredibleResources(Resource):
+    def __init__(self, *args, **kwargs):
+        self._headline = 70
+        self._body = 1000
+
     def post(self):
         # use parser and find the user's query
         args = parser.parse_args()
@@ -32,21 +36,28 @@ class CredibleResources(Resource):
         df_articles = model.collect_articles(keywords)
 
         # preprocess input data
-        claim_text_seq = model.preprocess(claim_text)
+        claim_text_seq = model.preprocess(claim_text, self._headline)
 
         # get stance of each article
         res = {}
         res["results"] = []
         for i in range(len(df_articles["articles"])):
-            credible_text_seq = model.preprocess(df_articles["articles"][i])
-            res["results"][i] = {}
-            res["results"][i]["source"] = df_articles["articles"][i]["source"]["title"]
-            res["results"][i]["source_url"] = df_articles["articles"][i]["source"]["uri"]
+            res["uid"] = df_articles["uid"]
+
+            credible_text_seq = model.preprocess(df_articles["articles"][i]["body"], self._body)
+
+            res["results"].append({})
+            
             res["results"][i]["article_title"] = df_articles["articles"][i]["title"]
             res["results"][i]["article_url"] = df_articles["articles"][i]["url"]
+            
+            res["results"][i]["source"] = df_articles["articles"][i]["source"]["title"]
+            res["results"][i]["source_url"] = df_articles["articles"][i]["source"]["uri"]
             res["results"][i]["source_ranking"] = df_articles["articles"][i]["source"]["ranking"]["importanceRank"]
+            
             res["results"][i]["sentiment"] = df_articles["articles"][i]["sentiment"]
-            res["results"][i]["credibility_score"] = model.predict([claim_text_seq, credible_text_seq])
+
+            res["results"][i]["credibility_score"] = model.predict(claim_text_seq, credible_text_seq).tolist()[0][0]
             res["results"][i]["cortical_semantic_score"] = model.semantic_similarity(claim_text, df_articles["articles"][i]["body"])
 
         return res, 200
