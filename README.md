@@ -20,8 +20,13 @@ python3 -m virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 python -m spacy download en
-
 ```
+
+## Add Heavy Files
+Add the heavy files mentioned below to the respective folders before trying to execute the API/web server
+
+1. glove100d.hdf5 -> code/ml/models/
+2. data_dump_glove.data -> code/ml/data/
 
 ## Dependencies
 1. [Event Registry API](http://eventregistry.org/)
@@ -29,6 +34,39 @@ python -m spacy download en
 
 ## Library Bug Fixes
 To ensure PyTextrank works as expected, follow [this link](https://github.com/DerwenAI/pytextrank/issues/15) to make necessary changes in your installation or use the virtualenv in this repository
+
+## Execution Instructions
+Run the below commands to execute both the API and website
+
+```bash
+# runs REST API
+cd code/api
+python3 api.py
+```
+
+This starts a Flask-Restful API at http://127.0.0.1:5000
+
+```bash
+# runs web server
+cd code/app/client
+python3 client.py
+```
+
+This starts a Flask-Restful API at http://127.0.0.1:9000
+
+
+## API Endpoints
+PS: [WIP] Formal documentation
+```
+/credible -> To compare information across multiple credible sources
+```
+
+## Steps to add a new endpoint to the API
+1. Create a class in ml/model.py which will hold all the Machine Learning model code
+2. Create a flask-restful class which will handle the requests in api/api/py and add appropriate endpoints for that class
+3. Collect input data from an HTML template using requests in app/client.py
+4. Link app/client.py to REST API class
+5. Return ML model result to new HTML file in app/client/views/ and display it there
 
 ## Team Details
 1. Akhilesh Nirna
