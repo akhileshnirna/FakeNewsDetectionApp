@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import requests
 
-app = Flask(__name__, template_folder='views')
+app = Flask(__name__, template_folder='views', static_url_path='/static')
 
 @app.route("/")
 def index():
@@ -25,6 +25,11 @@ def home():
         return render_template("result.html", data=res["results"], claim=claim)
     else:
         return render_template("home.html")
+
+@app.route('/index', methods=['GET'])
+def index_html():
+    if request.method == 'GET':
+        return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True,port=9000)
