@@ -15,8 +15,7 @@ access_token_secret = "bfDz7r938dbfdfJai974vcQBeENz32VD8C4eBGZ71OECy"
 
 class CommunityDetectionModel():
     
-    def __init__(self, user_name):
-        self.user_name = user_name
+    def __init__(self):
         self.twitter = Twitter(auth=OAuth(
                 access_token,
                 access_token_secret,
@@ -25,7 +24,8 @@ class CommunityDetectionModel():
                 )
         )
     
-    def graph_it(self, num_friends_at_depths=[2, 2, 2], n_clusters=3):
+    def graph_it(self, user_name, num_friends_at_depths=[2, 2, 2], n_clusters=3):
+        self.user_name = user_name
         connections = get_top_friends(self.twitter, self.user_name, 
                             friends_at_depths=num_friends_at_depths)
         

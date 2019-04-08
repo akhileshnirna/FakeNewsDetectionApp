@@ -11,6 +11,7 @@ import json
 import pickle
 
 from ml.model import CredibleResourcesModel
+from CommunityAPI import CommunityDetection
 app = Flask(__name__)
 api = Api(app)
 
@@ -65,6 +66,7 @@ class CredibleResources(Resource):
 
 # setup API resource routing
 api.add_resource(CredibleResources, '/credible')
+api.add_resource(CommunityDetection, '/community')
 
 if __name__ == '__main__':
     app.run(debug=True)
