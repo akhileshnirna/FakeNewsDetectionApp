@@ -8,10 +8,10 @@ from community import vectorize, spectral_cluster, pca
 from community import fake_community_detection
 from base64 import b64encode
 
-consumer_key = "YrlvTaYmfUFw6C3OnapAKiuaM"
-consumer_secret = "QUZXmYYyyugyuT3GMNoOOxtTAst9fbWziGhcNsejDdsDU5tIbL"
-access_token = "795922562546970624-6S2XzPe9K2gNrHphl3OUS1tjIgIh8rQ"
-access_token_secret = "bfDz7r938dbfdfJai974vcQBeENz32VD8C4eBGZ71OECy"
+consumer_key = ""
+consumer_secret = ""
+access_token = ""
+access_token_secret = ""
 
 class CommunityDetectionModel():
     
