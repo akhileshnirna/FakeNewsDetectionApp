@@ -10,14 +10,19 @@ from keras.models import load_model
 import json
 import pickle
 
+
+from ml.FakeWebsiteDetection import MLClassifier, RuleBasedClassifier
+from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
 app = Flask(__name__)
 api = Api(app)
 
-model = CredibleResourcesModel()
+#model = CredibleResourcesModel()
 
 parser = reqparse.RequestParser()
 parser.add_argument('claim_text')
+parser.add_argument('url')
+
 
 class CredibleResources(Resource):
     def __init__(self, *args, **kwargs):
@@ -62,9 +67,41 @@ class CredibleResources(Resource):
 
         return res, 200
 
+class FakeWebsite(Resource):
+    def post(self):
+        args = parser.parse_args()
+        url = args['url']
+        res = {}
+
+        #rule based classification
+        model2 = RuleBasedClassifier()
+        features = model2.build_feature_set(url)
+        res1 = model2.calculate(features)
+
+
+
+        #ML based classification
+        model1 = MLClassifier()
+        ind = -2
+        try:
+            ind = url.index("http")
+        except:
+            ind = -1
+        if not (ind == 0):
+            url = "http://" + url
+        res["data"] = model1.classify(url) | res1
+
+        detector = WebSpamDetect()
+
+
+        res["error"] = detector.grammarCheck(url)
+
+        print("Returning data: ", res)
+        return res, 200
 
 # setup API resource routing
 api.add_resource(CredibleResources, '/credible')
+api.add_resource(FakeWebsite,'/websitecheck')
 
 if __name__ == '__main__':
     app.run(debug=True)

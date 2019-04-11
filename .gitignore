@@ -7,3 +7,6 @@ mib dataset/
 code/venv/
 .vscode/
 code/research/
+ml/__pycache__/FakeWebsiteDetection.cpython-36.pyc
+ml/__pycache__/WebSpamDetection.cpython-36.pyc
+ml/__pycache__/__init__.cpython-36.pyc

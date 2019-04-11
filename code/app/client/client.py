@@ -26,5 +26,23 @@ def home():
     else:
         return render_template("home.html")
 
+@app.route("/fakeWebsite",methods=['POST', 'GET'])
+def fakeWebsite():
+    if request.method == 'POST':
+        res = {}
+        data = request.form['url']
+        app.logger.info(data)
+
+        r = requests.post(url = 'http://127.0.0.1:5000/websitecheck', data={"url": data})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+            app.logger.info(res)
+            print(res['data'])
+        return  render_template("result_test1.html", data    = res['error'] )
+    else:
+        return render_template('fakeWebsite.html')
+
 if __name__ == "__main__":
     app.run(debug=True,port=9000)
