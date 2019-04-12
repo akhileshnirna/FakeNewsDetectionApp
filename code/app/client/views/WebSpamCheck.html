@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Web Spam Check</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h2>Fake Website Check </h2>
+    <p><ul>
+      <li>Most of the spam websites consist of word count between 750 and 1500 words</li>
+      <li>Spam pages tend to use far more KeyWords(words other than "and","or","I","it",etc) in the TITLE compared to non-spam pages.</li>
+      <li>The Website's Top Level Domain will be checked whether it's part of the most abused/misused list of domains </li>
+      <li>Websites with a high percentage of anchor text (to standard text) are more likely to be spam sites.</li>
+    </ul></p>
+    <form action="" method="post">
+      <input type="text" name="url" required>
+      <input type="submit" name="submit" value="Check">
+    </form>
+
+    {% endblock %}
+  </body>
+</html>

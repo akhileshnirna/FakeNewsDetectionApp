@@ -30,7 +30,6 @@ def home():
 def index_html():
     if request.method == 'GET':
         return render_template('index.html')
-
 @app.route("/fakeWebsite",methods=['POST', 'GET'])
 def fakeWebsite():
     if request.method == 'POST':

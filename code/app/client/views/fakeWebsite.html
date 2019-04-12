@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Phishing Website Check</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+    {% block content %}
+
+    <h2>Fake Website Check </h2>
+    <p>This metric uses features of the URL to identify whether the given url is potentially phishing or non - phishing.</p>
+    <form action="" method="post">
+      <input type="text" name="url" required>
+      <input type="submit" name="submit" value="Check Veracity">
+    </form>
+
+    {% endblock %}
+  </body>
+</html>

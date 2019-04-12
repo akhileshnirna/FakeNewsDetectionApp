@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flask Tutorial</title>
+  </head>
+  <body>
+    {% extends "template.html" %}
+{% block content %}
+
+
+    <h2>Fake Website</h2>
+    <p>This metric uses features of the URL to identify whether the given url is potentially phishing or non - phishing.</p>
+    <table border="1">
+        <tr>
+            <th>URL</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td>{{url}}</td>
+            <td>{{result}}</td>
+        </tr>
+    </table>
+
+    </table>
+{% endblock %}
+
+  </body>
+</html>
