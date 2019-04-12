@@ -14,10 +14,11 @@ import pickle
 from ml.FakeWebsiteDetection import MLClassifier, RuleBasedClassifier
 from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
+
 app = Flask(__name__)
 api = Api(app)
 
-#model = CredibleResourcesModel()
+model = CredibleResourcesModel()
 
 parser = reqparse.RequestParser()
 parser.add_argument('claim_text')
@@ -73,6 +74,8 @@ class FakeWebsite(Resource):
         url = args['url']
         res = {}
 
+
+
         #rule based classification
         model2 = RuleBasedClassifier()
         features = model2.build_feature_set(url)
@@ -91,15 +94,49 @@ class FakeWebsite(Resource):
             url = "http://" + url
         res["data"] = model1.classify(url) | res1
 
-        detector = WebSpamDetect()
 
 
-        res["error"] = detector.grammarCheck(url)
+        if(res['data'] == True):
+            res['final'] = "Potential Phishing website."
+        else:
+            res['final'] = "Not a Phishing website"
+
+        res['url'] = url
+
+        #res["error"] = detector.grammarCheck(url)
 
         print("Returning data: ", res)
         return res, 200
 
+class WebSpamCheck(Resource):
+    def post(self):
+        args = parser.parse_args()
+        url = args['url']
+        res = {}
+
+        try:
+            ind = url.index("http")
+        except:
+            ind = -1
+        if not (ind == 0):
+            url = "http://" + url
+
+        detector = WebSpamDetect()
+
+        res['words_count'] = detector.countWords(url)
+        res['title_len'] = detector.getTitleLength(url)
+        res['tld_data'] = detector.TLDcheck(url)
+        if res['tld_data'] in detector.tlds:
+            res['tld_infer'] = "Unsafe/Most Abused"
+        else:
+            res['tld_infer'] = "Safe"
+        res['txt_to_anch'] = (detector.getAllTextAnchors(url)/res['words_count']) * 100
+        print("Returning data: ", res)
+        return res, 200
+
+
 # setup API resource routing
+api.add_resource(WebSpamCheck,'/spamcheck')
 api.add_resource(CredibleResources, '/credible')
 api.add_resource(FakeWebsite,'/websitecheck')
 

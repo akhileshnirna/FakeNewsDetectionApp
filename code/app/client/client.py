@@ -40,9 +40,28 @@ def fakeWebsite():
             res = r.json()
             app.logger.info(res)
             print(res['data'])
-        return  render_template("result_test1.html", data    = res['error'] )
+        return  render_template("result_test1.html", result = res['final'], url = res['url'])
     else:
         return render_template('fakeWebsite.html')
+
+@app.route("/WebSpamCheck",methods=['POST', 'GET'])
+def WebSpamCheck():
+    if request.method == 'POST':
+        res = {}
+        data = request.form['url']
+        app.logger.info(data)
+
+        r = requests.post(url = 'http://127.0.0.1:5000/spamcheck', data={"url": data})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+            app.logger.info(res)
+            #print(res['data'])
+        return  render_template("webspam_result.html", word_count = res['words_count'], title_len = res['title_len'], url = data, tld = res['tld_data'],
+                                infer = res['tld_infer'], txt_to_anch = res['txt_to_anch'])
+    else:
+        return render_template('WebSpamCheck.html')
 
 if __name__ == "__main__":
     app.run(debug=True,port=9000)

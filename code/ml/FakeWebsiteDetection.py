@@ -1,17 +1,15 @@
 import pickle
-import pandas as pd
-import os
-import sys
 import re
 import pandas as pd
 import ipaddress as ip
 import tldextract
 from urllib.parse import urlparse
 import tld
+import xgboost
 
 class MLClassifier():
     def __init__(self):
-        self.model = pickle.load(open('/home/akhil/minor/repo/FakeNewsDetectionApp-fakewebsite_child/code/ml/models/xgb_model.dat', 'rb'))
+        self.model = pickle.load(open('/home/akhil/PycharmProjects/FakeNewsAPP/FakeNewsDetectionApp/code/ml/models/xgb_model.dat', 'rb'))
         self.Suspicious_TLD = ['zip', 'cricket', 'link', 'work', 'party', 'gq', 'kim', 'country', 'science', 'tk']
         self.Suspicious_Domain = ['luckytime.co.kr', 'mattfoll.eu.interia.pl', 'trafficholder.com', 'dl.baixaki.com.br',
                                   'bembed.redtube.comr', 'tags.expo9.exponential.com', 'deepspacer.com', 'funad.co.kr',
