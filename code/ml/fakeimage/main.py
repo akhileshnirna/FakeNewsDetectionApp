@@ -1,4 +1,4 @@
-from demo import Demo
+from ml.fakeimage.demo import Demo
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
@@ -8,8 +8,9 @@ plt.switch_backend('agg')
 class FakeImageDetectionModel():
 
     def __init__(self):
-        ckpt_path = './ckpt/exif_final/exif_final.ckpt'
+        ckpt_path = r'C:\Users\joavi\Documents\B-TECH\8th-SEM\MinorProject - Fake News Detection\Code\selfconsistency\ckpt\exif_final\exif_final.ckpt'
         self.model = Demo(ckpt_path=ckpt_path, use_gpu=0, quality=3.0, num_per_dim=30)
+        print('INFO: FAKE IMAGE MODEL READY')
 
     def process(self, res, orig):                                        
         orig_c = orig.copy()
@@ -31,7 +32,7 @@ class FakeImageDetectionModel():
         return orig_c
 
 
-    def detect(self, im_path)
+    def detect(self, im_path):
         im, res = self.model(im_path, dense=True)
         final_img = self.process(res, im)
         cv2.imwrite('demo.png', final_img)

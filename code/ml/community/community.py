@@ -6,10 +6,11 @@ from collections import OrderedDict as dict
 import gensim as g
 from gensim.models import Doc2Vec
 
-MODEL_PATH = "./model/saved.model"
-FAKE_ACCOUNT_MODE_PATH = 'F_vs_G_model.data'
+MODEL_PATH = r"C:\Users\joavi\Documents\B-TECH\8th-SEM\MinorProject - Fake News Detection\Code\communitydetection\model\saved.model"
+FAKE_ACCOUNT_MODE_PATH = r"C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\FakeNewsDetectionApp\code\ml\community\F_vs_G_model.data"
 
 model = Doc2Vec.load(MODEL_PATH)
+fake_model_dict = pickle.load(open(FAKE_ACCOUNT_MODE_PATH, "rb"))
 
 print("Gensim Version : {}".format(g.__version__))
 print('MODEL LOADED from path : {}'.format(MODEL_PATH))
@@ -53,9 +54,8 @@ def pca(vectors, n_components=3):
 
 """ detect fake communities """
 def fake_community_detection(docs):
-    loaded_model = pickle.load(open(FAKE_ACCOUNT_MODE_PATH, "rb"))
-    fake_account_model = loaded_model["classifier"]
-    fake_account_scaler = loaded_model["scaler"]    
+    fake_account_model = fake_model_dict["classifier"]
+    fake_account_scaler = fake_model_dict["scaler"]    
     
     communities = dict()
     for user_name in docs:
@@ -71,15 +71,15 @@ def fake_community_detection(docs):
             communities[community_num]['fake_proba_list'] = []
         
         docs[user_name]['fake_proba'] = fake_probabilty[0][1]
-        communities[community_num]['users'].append( docs[user_name] )
-        communities[community_num]['fake_proba_list'].append(fake_probabilty[0][1])
+        communities[community_num]['users'].append(user_name)
+        communities[community_num]['fake_proba_list'].append(str(fake_probabilty[0][1]))
     
     for community_num in communities:
         prob = 1
         for p in communities[community_num]['fake_proba_list']:
-            prob *= p
+            prob *= float(p)
         prob ** 1/len(communities[community_num]['fake_proba_list'])
-        communities[community_num]['fake_proba'] = prob
+        communities[community_num]['fake_proba'] = str(prob)
 
     return communities
 

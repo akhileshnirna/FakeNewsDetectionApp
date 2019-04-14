@@ -1,3 +1,5 @@
+import functools
+
 def get_top_friends(twitter_api, user_name, friends_at_depths=[4, 3]):
     connections = dict()
     queue = [user_name]

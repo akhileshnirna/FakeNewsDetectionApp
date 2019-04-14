@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request
 import requests
+import json
 
 app = Flask(__name__, template_folder='views', static_url_path='/static')
+app.debug = True
 
 @app.route("/")
 def index():
@@ -45,6 +47,7 @@ def fakeWebsite():
             res = r.json()
             app.logger.info(res)
             print(res['data'])
+            print(res)
         return  render_template("result_test1.html", result = res['final'], url = res['url'])
     else:
         return render_template('fakeWebsite.html')
@@ -67,6 +70,23 @@ def WebSpamCheck():
                                 infer = res['tld_infer'], txt_to_anch = res['txt_to_anch'])
     else:
         return render_template('WebSpamCheck.html')
+
+@app.route("/community", methods=['POST', 'GET'])
+def community():
+    if request.method == 'GET':
+        return render_template('community_detection.html')
+    else:
+        res = {}
+        data = request.form['user_name']
+        app.logger.info(data)
+
+        r = requests.post(url='http://127.0.0.1:5000/community', data={'user_name': data})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+        return json.dumps(res)
+        
 
 if __name__ == "__main__":
     app.run(debug=True,port=9000)

@@ -2,6 +2,8 @@ from __future__ import print_function
 from __future__ import division
 
 import os, sys, numpy as np, ast
+import os.path, sys
+sys.path.append(os.path.dirname(__file__))
 import init_paths
 import load_models
 from lib.utils import benchmark_utils, util

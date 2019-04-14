@@ -6,10 +6,12 @@ import tldextract
 from urllib.parse import urlparse
 import tld
 import xgboost
+import os
 
+MODEL_PATH = r'C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\FakeNewsDetectionApp\code\ml\models'
 class MLClassifier():
     def __init__(self):
-        self.model = pickle.load(open('xgb_model.dat', 'rb'))
+        self.model = pickle.load(open(os.path.join(MODEL_PATH, 'xgb_model.dat'), 'rb'))
         self.Suspicious_TLD = ['zip', 'cricket', 'link', 'work', 'party', 'gq', 'kim', 'country', 'science', 'tk']
         self.Suspicious_Domain = ['luckytime.co.kr', 'mattfoll.eu.interia.pl', 'trafficholder.com', 'dl.baixaki.com.br',
                                   'bembed.redtube.comr', 'tags.expo9.exponential.com', 'deepspacer.com', 'funad.co.kr',

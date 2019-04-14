@@ -9,14 +9,14 @@ import numpy as np
 from keras.models import load_model
 import json
 
-
 from ml.FakeWebsiteDetection import MLClassifier, RuleBasedClassifier
 from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
 from CommunityAPI import CommunityDetection
-from FakeImageAPI import FakeImageDetection
+# from FakeImageAPI import FakeImageDetection
 app = Flask(__name__)
 api = Api(app)
+app.debug = True
 
 model = CredibleResourcesModel()
 
@@ -139,7 +139,7 @@ class WebSpamCheck(Resource):
 api.add_resource(WebSpamCheck,'/spamcheck')
 api.add_resource(CredibleResources, '/credible')
 api.add_resource(CommunityDetection, '/community')
-api.add_resource(FakeImageDetection, '/fakeimage')
+# api.add_resource(FakeImageDetection, '/fakeimage')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,1 @@
+IMG_PATH = r'C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\FakeNewsDetectionApp\code\app\client\static\img' 

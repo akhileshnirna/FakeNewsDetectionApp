@@ -1,9 +1,5 @@
 digraph {
-	trump [label="trump 0.116"]
-	be [label="be 0.215"]
-	president [label="president 0.299"]
-	usa [label="usa 0.370"]
-	trump -> be [constraint=false]
-	be -> president [constraint=false]
-	president -> usa [constraint=false]
+	Global [label="Global 0.351"]
+	Warming [label="Warming 0.649"]
+	Global -> Warming [constraint=false]
 }
