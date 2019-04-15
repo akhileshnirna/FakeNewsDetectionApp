@@ -20,8 +20,10 @@ python3 -m virtualenv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 python -m spacy download en
-- Gensim Version: https://github.com/dataviral/gensim
 ```
+
+## Other dependencies
+[x] Install gensim from this link https://github.com/dataviral/gensim
 
 
 ## Add Heavy Files
