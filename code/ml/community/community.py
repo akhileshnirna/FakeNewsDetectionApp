@@ -5,15 +5,13 @@ import pickle
 from collections import OrderedDict as dict
 import gensim as g
 from gensim.models import Doc2Vec
+from ml.vars import COMMUNITY_MODEL_PATH, FAKE_ACCOUNT_MODEL_PATH
 
-MODEL_PATH = r"C:\Users\joavi\Documents\B-TECH\8th-SEM\MinorProject - Fake News Detection\Code\communitydetection\model\saved.model"
-FAKE_ACCOUNT_MODE_PATH = r"C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\FakeNewsDetectionApp\code\ml\community\F_vs_G_model.data"
-
-model = Doc2Vec.load(MODEL_PATH)
-fake_model_dict = pickle.load(open(FAKE_ACCOUNT_MODE_PATH, "rb"))
+model = Doc2Vec.load(COMMUNITY_MODEL_PATH)
+fake_model_dict = pickle.load(open(FAKE_ACCOUNT_MODEL_PATH, "rb"))
 
 print("Gensim Version : {}".format(g.__version__))
-print('MODEL LOADED from path : {}'.format(MODEL_PATH))
+print('MODEL LOADED from path : {}'.format(COMMUNITY_MODEL_PATH))
 
 """ Function converts a set of documents into vectors """
 def vectorize(docs):

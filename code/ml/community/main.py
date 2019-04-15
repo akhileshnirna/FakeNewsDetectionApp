@@ -9,14 +9,13 @@ from ml.community.community import fake_community_detection
 from base64 import b64encode
 import json
 import os
-from ml.vars import IMG_PATH
+from ml.vars import IMG_PATH, CACHE_PATH
 
 consumer_key = "YrlvTaYmfUFw6C3OnapAKiuaM"
 consumer_secret = "QUZXmYYyyugyuT3GMNoOOxtTAst9fbWziGhcNsejDdsDU5tIbL"
 access_token = "795922562546970624-6S2XzPe9K2gNrHphl3OUS1tjIgIh8rQ"
 access_token_secret = "bfDz7r938dbfdfJai974vcQBeENz32VD8C4eBGZ71OECy"
 
-CACHE_PATH = r'C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\cache\temp.json'
 
 class CommunityDetectionModel():
     
