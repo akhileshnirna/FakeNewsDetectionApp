@@ -9,3 +9,4 @@ code/venv/
 code/research/
 ml/__pycache__/*
 ml/api/*
+*__pycache__*

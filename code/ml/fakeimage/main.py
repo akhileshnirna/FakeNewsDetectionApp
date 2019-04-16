@@ -1,14 +1,16 @@
 from ml.fakeimage.demo import Demo
+from ml.vars import FAKE_IMAGE_MODEL_PATH, IMG_PATH 
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 from base64 import b64encode
+import os
 plt.switch_backend('agg')
 
 class FakeImageDetectionModel():
 
     def __init__(self):
-        ckpt_path = r'C:\Users\joavi\Documents\B-TECH\8th-SEM\MinorProject - Fake News Detection\Code\selfconsistency\ckpt\exif_final\exif_final.ckpt'
+        ckpt_path = FAKE_IMAGE_MODEL_PATH
         self.model = Demo(ckpt_path=ckpt_path, use_gpu=0, quality=3.0, num_per_dim=30)
         print('INFO: FAKE IMAGE MODEL READY')
 
@@ -35,7 +37,7 @@ class FakeImageDetectionModel():
     def detect(self, im_path):
         im, res = self.model(im_path, dense=True)
         final_img = self.process(res, im)
-        cv2.imwrite('demo.png', final_img)
-        imageb64 = b64encode.encode(open('demo.png', 'rb'))
-        return imageb64
+        # final_img = cv2.cvtColor(final_img, cv2.COLOR_BGR2RGB)
+        cv2.imwrite(os.path.join(IMG_PATH, 'fake_image.png'), final_img)
+        return True
 

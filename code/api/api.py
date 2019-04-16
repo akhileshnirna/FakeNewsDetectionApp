@@ -13,6 +13,7 @@ from ml.FakeWebsiteDetection import MLClassifier, RuleBasedClassifier
 from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
 from CommunityAPI import CommunityDetection
+from FakeAccountAPI import FakeAccountDetection
 # from FakeImageAPI import FakeImageDetection
 app = Flask(__name__)
 api = Api(app)
@@ -140,6 +141,7 @@ api.add_resource(WebSpamCheck,'/spamcheck')
 api.add_resource(CredibleResources, '/credible')
 api.add_resource(CommunityDetection, '/community')
 # api.add_resource(FakeImageDetection, '/fakeimage')
+api.add_resource(FakeAccountDetection, '/fakeaccount')
 
 if __name__ == '__main__':
     app.run(debug=True)

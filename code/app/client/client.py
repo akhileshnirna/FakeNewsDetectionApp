@@ -86,6 +86,22 @@ def community():
         else:
             res = r.json()
         return json.dumps(res)
+
+@app.route("/fakeaccount", methods=['POST', 'GET'])
+def fakeaccount():
+    if request.method == 'GET':
+        return render_template('fakeaccount_detection.html')
+    else:
+        res = {}
+        data = request.form['user_name']
+        app.logger.info(data)
+
+        r = requests.post(url='http://127.0.0.1:5000/fakeaccount', data={'user_name': data})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+        return json.dumps(res)
         
 
 if __name__ == "__main__":
