@@ -74,7 +74,7 @@
             
             <div class="cd-timeline__block" >
                 <div class="cd-timeline__img cd-timeline__img--picture">
-                    <img src="/static/timeline/img/cd-icon-picture.svg" alt="Picture">
+                    <!-- <img src="/static/timeline/img/cd-icon-picture.svg" alt="Picture"> -->
                 </div> <!-- cd-timeline__img -->
                 <div class="cd-timeline__content text-component">
                     <h2>Title of section 1</h2>
@@ -131,9 +131,7 @@
                         imgOpt = 'cd-icon-movie.svg';
                         imgOptDiv = 'movie';
                     }
-                    var imgDiv = $(`<div class="cd-timeline__img cd-timeline__img--${imgOptDiv}">`);
-                    $(`<img src="/static/timeline/img/${imgOpt}" alt="Picture">`).appendTo(imgDiv);
-                    imgDiv.appendTo(div);
+                    $(`<div class="cd-timeline__img cd-timeline__img--${imgOptDiv}">`).appendTo(div);
 
                     var textDiv = $('<div class="cd-timeline__content text-component">');
                     $('<h2>').text(details['name']).appendTo(textDiv);
