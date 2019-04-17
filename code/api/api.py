@@ -142,6 +142,7 @@ api.add_resource(CredibleResources, '/credible')
 api.add_resource(CommunityDetection, '/community')
 # api.add_resource(FakeImageDetection, '/fakeimage')
 api.add_resource(FakeAccountDetection, '/fakeaccount')
+api.add_resource(FakeWebsite,'/websitecheck')
 
 if __name__ == '__main__':
     app.run(debug=True)

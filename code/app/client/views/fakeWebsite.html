@@ -1,20 +1,139 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Phishing Website Check</title>
-  </head>
-  <body>
-    {% extends "template.html" %}
-    {% block content %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>Community Detection</title>
+    <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
+    <script type="text/javascript" src="/static/js/lightbox.js" ></script>
+    <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'>
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+</head>
+<body>
+    	<!-- ====================================================
+	header section -->
+    <header class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 header-logo">
+                    <br>
+                    <a href="index"><img src="/static/img/logo.png" alt="" class="img-responsive logo"></a>
+                </div>
 
-    <h2>Fake Website Check </h2>
-    <p>This metric uses features of the URL to identify whether the given url is potentially phishing or non - phishing.</p>
-    <form action="" method="post">
-      <input type="text" name="url" required>
-      <input type="submit" name="submit" value="Check Veracity">
-    </form>
+                <div class="col-md-7">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid nav-bar">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
 
-    {% endblock %}
-  </body>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                            <ul class="nav navbar-nav navbar-right">
+                            <li><a class="menu active" href="#home" >Home</a></li>
+                            <li><a class="menu" href="#about">about us</a></li>
+                            <li><a class="menu" href="#service">our services </a></li>
+                            <li><a class="menu" href="#team">our team</a></li>
+                            <li><a class="menu" href="#contact"> contact us</a></li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        </div><!-- / .container-fluid -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header> <!-- end of header area -->
+    <div class="header-backup"></div>
+
+    <section class="about text-center">
+        <div class="container-fluid">
+            <div class="row">
+
+                <h2>Fake Website Check </h2>
+                <p>This metric uses features of the URL to identify whether the given url is potentially phishing or non - phishing.</p>
+                <form id="fkwebsite" onsubmit="return false" >
+                    <input type="text" placeholder="Enter URL" name="url" required>
+                    <input type="submit" id="submitButton"  name="submit" value="Check Veracity">
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="header-backup"></div>
+    <section class="about text-center">
+            <div class="container" id="results">
+
+            </div>
+        </section>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            maxWidth: 1000,
+            maxHeight: 1000
+        });
+
+
+        $('input#submitButton').click(function(){
+        $.post( '', $('form#fkwebsite').serialize(), function(data) {
+          var div = $('div#results');
+          div.html('');
+          var heading = $("<h3 id='output'>");
+          heading.attr('innerHTML', 'Output');
+          heading.appendTo(div);
+          var table = $('<table class="community-details">');
+
+          var row1 = $('<tr>');
+          var row2 = $('<tr>');
+          var th1 = $('<th>');
+          var th2 = $('<th>');
+          var td1 = $('<td>');
+          var td2 = $('<td>');
+
+          th1.text('URL');
+          th2.text("Results");
+
+          th1.appendTo(row1);
+          th2.appendTo(row1);
+
+
+          td1.text(""+data['url']);
+          td2.text(""+data['final']);
+
+          td1.appendTo(row2);
+          td2.appendTo(row2);
+
+
+
+          row1.appendTo(table);
+          row2.appendTo(table);
+
+          table.appendTo(div);
+
+        },
+         'json' // I expect a JSON response
+            );
+
+
+        });
+
+
+
+
+
+    </script>
+</body>
+
+
+
 </html>

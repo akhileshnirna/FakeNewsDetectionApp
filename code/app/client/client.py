@@ -48,7 +48,7 @@ def fakeWebsite():
             app.logger.info(res)
             print(res['data'])
             print(res)
-        return  render_template("result_test1.html", result = res['final'], url = res['url'])
+        return  json.dumps(res)
     else:
         return render_template('fakeWebsite.html')
 
@@ -66,8 +66,7 @@ def WebSpamCheck():
             res = r.json()
             app.logger.info(res)
             #print(res['data'])
-        return  render_template("webspam_result.html", word_count = res['words_count'], title_len = res['title_len'], url = data, tld = res['tld_data'],
-                                infer = res['tld_infer'], txt_to_anch = res['txt_to_anch'])
+        return  json.dumps(res)
     else:
         return render_template('WebSpamCheck.html')
 
