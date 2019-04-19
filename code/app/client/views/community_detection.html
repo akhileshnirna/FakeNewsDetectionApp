@@ -106,7 +106,6 @@
                 // Append the second image
                 var imageDiv = $('<div class="col-lg-6 col-sm-6"> id="img"');
                 var anchor = $('<a data-lightbox="roadtrip" data-title="Connections Graph" href="/static/img/connections.png">');
-                // anchor.text('connection_graph');
                 var img = $('<img id="connection_graph">'); //Equivalent: $(document.createElement('img'))
                 img.attr('src', "/static/img/connections.png");
                 img.height(500);
@@ -118,16 +117,20 @@
                 rowDiv.appendTo(resultsDiv);
                 // Now create table and populate contents with fake community probabilities
                 var table = $('<table class="community-details">');
+                var tr =$('<tr>');
+                $('<th>').text('Account Name').appendTo(tr);
+                $('<th>').text('Fake Probability').appendTo(tr);
+                tr.appendTo(table);
                 for(var i in data['communities']) {
                     for(var j=0; j<data['communities'][i]['users'].length; j++) {
                         var name = data['communities'][i]['users'][j];
                         var fake_prob = data['communities'][i]['fake_proba_list'][j];
-                        var row = $('<tr>').text( name+': ' + fake_prob);
-                        row.appendTo(table);
+                        var tr = $('<tr>');
+                        $('<td>').text(name).appendTo(tr);
+                        $('<td>').text(fake_prob).appendTo(tr);
+                        tr.appendTo(table);
                     }
-                    // var row = $('<tr>').text('result ' + i);
                 }
-                // var rowDiv = $('<div class="row">');
                 table.appendTo(resultsDiv);
             },
             'json' // I expect a JSON response

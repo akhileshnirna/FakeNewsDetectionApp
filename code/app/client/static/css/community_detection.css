@@ -1,0 +1,22 @@
+table {
+  border: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+tr {
+  text-align: center;
+}
+
+th {
+  font-size: 40px;
+  background-color: #C25B56;
+  color: #FFFFFF;
+}
+
+td {
+  font-size: 24px;
+}
+
+tr:nth-child(even) {background: #BEB9B5}
+tr:nth-child(odd) {background: #FEF6EB}

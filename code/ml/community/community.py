@@ -60,6 +60,7 @@ def fake_community_detection(docs):
         details = docs[user_name]['details']
         parsed_details = parse_user(details)
         scaled_details = fake_account_scaler.transform(parsed_details.reshape(1, -1))
+        
         fake_probabilty = fake_account_model.predict_proba(scaled_details)
         community_num = docs[user_name]['community']
 
@@ -92,11 +93,11 @@ def parse_user(user_details):
     data = []
     for col in useful_columns:
         try:
-                val = getattr(user_details, col)
+                val = user_details[col]
                 if isinstance(val, int):
                     data.append(val)
                 elif isinstance(val, bool):
-                    if val is True:
+                    if val:
                         data.append(1)
                     else:
                         data.append(0)
@@ -112,6 +113,8 @@ def parse_user(user_details):
                         else:
                             data.append(0)
         except:
+                print("NO ATTR: ", col)
                 data.append(0)
     return np.array(data)
      
+

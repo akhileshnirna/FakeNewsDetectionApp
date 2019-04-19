@@ -33,6 +33,7 @@ class CommunityDetectionModel():
         if not os.path.exists(CACHE_PATH):
             connections = get_top_friends(self.twitter, self.user_name, 
                                 friends_at_depths=num_friends_at_depths)
+            
             json.dump(connections, open(CACHE_PATH, 'w'))
         else:
             connections = json.load(open(CACHE_PATH, 'r'))
@@ -57,7 +58,7 @@ class CommunityDetectionModel():
         self.gen_graph(reduced_vectors, clustered_labels, description_vectors)
         # community_graph = b64encode(open('graph.png', 'rb').read())
         # community_graph = community_graph.decode('utf-8')
-
+        
         communities = fake_community_detection(docs)
         
         return {

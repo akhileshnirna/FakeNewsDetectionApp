@@ -64,6 +64,10 @@
                     <input type="submit" id="submitButton" value="Detect Fake Accounts" />
                 </form>
             </div>
+            <br>
+            <div id="tweet" style="font-size: 20px">
+
+            </div>
         </div>
     </section>
     <div class="header-backup"></div>
@@ -117,9 +121,11 @@
                 
                 var resultsDiv = $('div#resultsDiv');
                 resultsDiv.html(''); // Clear previous data
+                $('div#tweet').html('');
+                $('<h3>').text(data['tweet']).appendTo($('div#tweet'));
+                $('<hr>').appendTo($('div#tweet'));
+                $('<p>').text('Fake News Probability : ' + data['fake_news_prob']).appendTo($('div#tweet'));
                 
-                $('<h3>').text(data['tweet']).appendTo(resultsDiv);
-                $('<p>').text('Fake News Probability : ' + data['fake_news_prob']).appendTo(resultsDiv);
                 for (var i=0; i<data['retweeters'].length; i++) {
                     var details = data['retweeters'][i];
                     var div = $('<div class="cd-timeline__block">');
