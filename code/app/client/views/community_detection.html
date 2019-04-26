@@ -5,13 +5,13 @@
     <title>Community Detection</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
     <script type="text/javascript" src="/static/js/lightbox.js" ></script>
-    <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'>
 	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'>
 </head>
 <body>
     	<!-- ====================================================
@@ -54,7 +54,9 @@
             </div>
         </div>
     </header> <!-- end of header area -->
-    <div class="header-backup"></div>
+    <br>
+    <br>
+    <br>
       
     <section class="about text-center">
         <div class="container-fluid">
@@ -96,8 +98,9 @@
                 var imageDiv = $('<div class="col-lg-6 col-sm-6"> id="img"');
                 var anchor = $('<a data-lightbox="roadtrip" data-title="Community Graph" href="/static/img/communities.png">');
                 // anchor.text('community_graph');
+                dtime = new Date();
                 var img = $('<img id="community_graph" >'); //Equivalent: $(document.createElement('img'))
-                img.attr('src', "/static/img/communities.png");
+                img.attr('src', "/static/img/communities.png?"+dtime.getTime());
                 img.height(500);
                 img.width(500);
                 img.appendTo(anchor);
@@ -107,7 +110,7 @@
                 var imageDiv = $('<div class="col-lg-6 col-sm-6"> id="img"');
                 var anchor = $('<a data-lightbox="roadtrip" data-title="Connections Graph" href="/static/img/connections.png">');
                 var img = $('<img id="connection_graph">'); //Equivalent: $(document.createElement('img'))
-                img.attr('src', "/static/img/connections.png");
+                img.attr('src', "/static/img/connections.png?"+dtime.getTime());
                 img.height(500);
                 img.width(500);
                 img.appendTo(anchor);
@@ -116,11 +119,22 @@
                 // Add row div to results div
                 rowDiv.appendTo(resultsDiv);
                 // Now create table and populate contents with fake community probabilities
-                var table = $('<table class="community-details">');
-                var tr =$('<tr>');
-                $('<th>').text('Account Name').appendTo(tr);
-                $('<th>').text('Fake Probability').appendTo(tr);
-                tr.appendTo(table);
+                var rowDiv = $('<div class="row">');
+                var tableAccounts = $('<table class="account-details col-lg-4 col-sm-4">');
+                $('<th width="100%">').text('Accounts Table').appendTo('<tr>').appendTo(tableAccounts);
+                var tableCommunities = $('<table class="community-details col-lg-4 col-sm-4">');
+                $('<th width="100%">').text('Communities Table').appendTo('<tr>').appendTo(tableCommunities);
+        
+                var tr =$('<tr style="font-size:28px;color:#19260C;background-color:#7FBF3F">');
+                $('<td>').attr('align', 'center').text('Account Name').appendTo(tr);
+                $('<td>').text('Fake Probability').appendTo(tr);
+                tr.appendTo(tableAccounts);
+
+                var tr =$('<tr style="font-size:28px;color:#19260C;background-color:#7FBF3F">');
+                $('<td>').text('Account Name').appendTo(tr);
+                $('<td>').text('Fake Probability').appendTo(tr);
+                tr.appendTo(tableCommunities);
+
                 for(var i in data['communities']) {
                     for(var j=0; j<data['communities'][i]['users'].length; j++) {
                         var name = data['communities'][i]['users'][j];
@@ -128,10 +142,17 @@
                         var tr = $('<tr>');
                         $('<td>').text(name).appendTo(tr);
                         $('<td>').text(fake_prob).appendTo(tr);
-                        tr.appendTo(table);
+                        tr.appendTo(tableAccounts);
                     }
+                    var tr = $('<tr>');
+                    $('<td>').text(i).appendTo(tr);
+                    $('<td>').text(data['communities'][i]['fake_proba']).appendTo(tr);
+                    tr.appendTo(tableCommunities);
                 }
-                table.appendTo(resultsDiv);
+                tableAccounts.appendTo(rowDiv);
+                $('<p class="col-lg-4 col-sm-4">').appendTo(rowDiv);
+                tableCommunities.appendTo(rowDiv);
+                rowDiv.appendTo(resultsDiv);
             },
             'json' // I expect a JSON response
             );

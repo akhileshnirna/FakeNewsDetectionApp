@@ -11,6 +11,8 @@ import json
 import os
 from ml.vars import IMG_PATH, CACHE_PATH
 
+plt.style.use('ggplot')
+
 consumer_key = "YrlvTaYmfUFw6C3OnapAKiuaM"
 consumer_secret = "QUZXmYYyyugyuT3GMNoOOxtTAst9fbWziGhcNsejDdsDU5tIbL"
 access_token = "795922562546970624-6S2XzPe9K2gNrHphl3OUS1tjIgIh8rQ"
@@ -28,16 +30,27 @@ class CommunityDetectionModel():
                 )
         )
     
-    def graph_it(self, user_name, num_friends_at_depths=[2, 2], n_clusters=3):
+    def graph_it(self, user_name, num_friends_at_depths=[2, 2, 2], n_clusters=3):
         self.user_name = user_name
-        if not os.path.exists(CACHE_PATH):
-            connections = get_top_friends(self.twitter, self.user_name, 
-                                friends_at_depths=num_friends_at_depths)
-            
-            json.dump(connections, open(CACHE_PATH, 'w'))
+        cache_file = open(CACHE_PATH, 'a+')
+        cache_file.seek(0)
+        try:
+            cache_data = json.load(cache_file)
+        except json.decoder.JSONDecodeError as err:
+            print(err)
+            cache_data = dict()
+        print(cache_data.keys())
+        cache_key = user_name + "_" + str(num_friends_at_depths)
+        if cache_key not in cache_data:
+            connections = get_top_friends(self.twitter, self.user_name,
+                                    friends_at_depths=num_friends_at_depths)
+            cache_data[cache_key] = connections
+            cache_file = open(CACHE_PATH, 'w')
+            json.dump(cache_data, cache_file)
         else:
-            connections = json.load(open(CACHE_PATH, 'r'))
-                            
+            connections = cache_data[cache_key]
+        cache_file.close()
+            
         connection_graph = generate_graph_from_connections(connections)
         viz_graph(connection_graph, save_graph=True, file_name='connections.png')
         # connection_graph = b64encode(open('demo.png', 'rb').read())
@@ -58,7 +71,7 @@ class CommunityDetectionModel():
         self.gen_graph(reduced_vectors, clustered_labels, description_vectors)
         # community_graph = b64encode(open('graph.png', 'rb').read())
         # community_graph = community_graph.decode('utf-8')
-        
+
         communities = fake_community_detection(docs)
         
         return {
@@ -81,9 +94,10 @@ class CommunityDetectionModel():
 
         for i, (vec, l, name) in enumerate(zip(reduced_vectors, clustered_labels, description_vectors)):
             x, y, z = vec
-            ax.scatter(x, y, z, color=colors[l], s=100, label=name, cmap='RdPu')
-            ax.text(x+0.1*x, y+0.1*y, z+0.1*z, name, fontsize=16)
+            ax.scatter(x, y, z, s=100, color=colors, label=name, cmap='RdPu')
+            ax.text(x+0.1*x, y+0.1*y, z+0.1*z, name, fontsize=20)
 
+        plt.tight_layout()
         plt.savefig(os.path.join(IMG_PATH, 'communities.png'))
         plt.clf()
 

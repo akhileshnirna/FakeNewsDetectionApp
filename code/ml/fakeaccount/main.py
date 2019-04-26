@@ -35,10 +35,12 @@ class FakeAccountDetectionModel():
         if i==max_tweets:
           break
         retweets = self.api.retweets(tweet.id, count=1000)
+        retweets = sorted(retweets, key=lambda t: t.created_at)
         retweeter_details = [retweeter.user for retweeter in retweets]
         fake_news_prob, fake_users = self.predictTweet(retweeter_details)
         outputs[i]['fake_news_prob'] = str(fake_news_prob)
         outputs[i]['retweeters'] = fake_users
+        outputs[i]['time'] = [str(t.created_at) for t in retweets]
       return outputs
 
     def predictTweet(self, users_details):
@@ -49,7 +51,8 @@ class FakeAccountDetectionModel():
           "name": user.screen_name,
           "description": user.description,
           "following": user.friends_count,
-          "followers": user.followers_count}
+          "followers": user.followers_count
+          }
         user = self._parse_details_v2(user)
         user = self._scaler.transform(user)
         probabilities = self._classifier.predict_proba(user)

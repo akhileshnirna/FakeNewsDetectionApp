@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>Credible Resources</title>
+    <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
+    <script type="text/javascript" src="/static/js/lightbox.js" ></script>
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+    <!-- <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'> -->
+</head>
+<body>
+    	<!-- ====================================================
+	header section -->
+    <header class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2 header-logo">
+                    <br>
+                    <a href="index"><img src="/static/img/logo.png" alt="" class="img-responsive logo"></a>
+                </div>
+
+                <div class="col-md-7">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid nav-bar">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            
+                            <ul class="nav navbar-nav navbar-right">
+                            <li><a class="menu active" href="#home" >Home</a></li>
+                            <li><a class="menu" href="#about">about us</a></li>
+                            <li><a class="menu" href="#service">our services </a></li>
+                            <li><a class="menu" href="#team">our team</a></li>
+                            <li><a class="menu" href="#contact"> contact us</a></li>
+                            </ul>
+                        </div><!-- /navbar-collapse -->
+                        </div><!-- / .container-fluid -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header> <!-- end of header area -->
+    <br>
+    <br>
+    <br>
+      
+    <section class="about text-center">
+        <div class="container-fluid">
+            <div class="row">
+                <h2>Credible Resources Check</h2>
+                <p>Enter A statement</p>
+                <form id="credible" onsubmit="return false">
+                    <input type="text" name="claim"  required/>
+                    <input type="submit" id="submitButton" value="Fact Check" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <div class="header-backup"></div>
+    <section class="about text-center">
+            <div class="container" id="results">
+
+            </div>
+        </section>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            maxWidth: 1000,
+            maxHeight: 1000
+        });
+        $('input#submitButton').click( function() {
+            $.post( '', $('form#credible').serialize(), function(data) {
+                data = data['results'];
+                if (!data.length) {
+                    return;
+                }
+                console.log(data);
+                var resultsDiv = $('div#results');
+                resultsDiv.html('');
+                // Add heading 
+                var heading = $("<h3 id='output'>");
+                heading.attr('innerHTML', 'Output');
+                heading.appendTo(resultsDiv);
+                // Now create table and populate contents with fake community probabilities
+                var tableResources = $('<table style="border:1px solid black; width: auto; height: auto;">');
+                var tr =$('<tr>');
+                $('<th>').text('Source').appendTo(tr);
+                $('<th>').text('Article Title').appendTo(tr);
+                $('<th>').text('ML Result').appendTo(tr);
+                $('<th>').text('Cortical Result (Jaccard cDistance)').appendTo(tr);
+                tr.appendTo(tableResources);
+                for(var i=0; i<data.length; i++) {
+                  var article = data[i];
+                  var tr = $("<tr>");
+                  var td1 = $("<td>");
+                  $('<a>').attr('href', article.source_url).text(article.source).appendTo(td1);
+                  var td2 = $("<td>");
+                  $('<a>').attr('href', article.article_url).text(article.article_title).appendTo(td2);
+                  var td3 = $("<td>").text(article.credibility_score);
+                  var td4 = $("<td>").text(article.cortical_semantic_score.jaccardDistance);
+                  td1.appendTo(tr);
+                  td2.appendTo(tr);
+                  td3.appendTo(tr);
+                  td4.appendTo(tr);
+                  tr.appendTo(tableResources);
+                }
+                tableResources.appendTo(resultsDiv);
+            },
+            'json' // I expect a JSON response
+            );
+        });
+    </script>
+</body>
+
+
+
+</html>

@@ -17,6 +17,6 @@ class CommunityDetection(Resource):
         args = parser.parse_args()
         user_name = args['user_name']
 
-        output = model.graph_it(user_name, num_friends_at_depths=[2, 2], n_clusters=3)
+        output = model.graph_it(user_name, num_friends_at_depths=[2, 2, 2], n_clusters=3)
         res = output
         return res, 200

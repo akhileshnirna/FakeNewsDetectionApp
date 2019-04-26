@@ -69,9 +69,9 @@ def fake_community_detection(docs):
             communities[community_num]['users'] = []
             communities[community_num]['fake_proba_list'] = []
         
-        docs[user_name]['fake_proba'] = fake_probabilty[0][1]
+        docs[user_name]['fake_proba'] = fake_probabilty[0][0]
         communities[community_num]['users'].append(user_name)
-        communities[community_num]['fake_proba_list'].append(str(fake_probabilty[0][1]))
+        communities[community_num]['fake_proba_list'].append(str(fake_probabilty[0][0]))
     
     for community_num in communities:
         prob = 1

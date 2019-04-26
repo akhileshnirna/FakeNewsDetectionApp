@@ -101,7 +101,41 @@ def fakeaccount():
         else:
             res = r.json()
         return json.dumps(res)
+
+@app.route("/stance", methods=['POST', 'GET'])
+def stance():
+    if request.method == 'GET':
+        return render_template('stance_detection.html')
+    else:
+        res = {}
+        data = request.form['user_name']
+        app.logger.info(data)
+
+        r = requests.post(url='http://127.0.0.1:5000/stance', data={'user_name': data})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+        return json.dumps(res)
         
+@app.route("/credible", methods=['POST', 'GET'])
+def credible():
+    if request.method == 'POST':
+        res = {}
+        claim = request.form['claim']
+        app.logger.info(claim)
+
+        # send request to rest api
+        r = requests.post(url = 'http://127.0.0.1:5000/credible', data = {"claim_text": claim})
+        if r.status_code != 200:
+            app.logger.error("Request has failed!")
+        else:
+            res = r.json()
+            app.logger.info(res)
+        # send json to template
+        return json.dumps(res)
+    else:
+        return render_template("credible_resources.html")
 
 if __name__ == "__main__":
     app.run(debug=True,port=9000)

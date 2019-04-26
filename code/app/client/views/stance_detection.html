@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
     <title>Fake Account Detection</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
-    <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/static/timeline/css/style.css">
 	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
@@ -71,63 +70,7 @@
             </div>
         </div>
     </section>
-    <br>
-    
-
-    <div id="resultsDiv">
-
-    </div>
-    
-    <script src="/static/timeline/js/main.js"></script>
-    <script>
-        $('input#submitButton').click( function() {
-            $.post( '', $('form#fakeaccount').serialize(), function(data) {
-                var data = data[0];
-                
-                var resultsDiv = $('div#resultsDiv');
-                resultsDiv.html(''); // Clear previous data
-                resultsDiv = $('<section class="cd-timeline js-cd-timeline col-lg-12 col-sm-12" id="results">').appendTo(resultsDiv);
-                resultsDiv = $('<div class="container container--lg cd-timeline__container">').appendTo(resultsDiv);
-                resultsDiv = $('<div class="container container--lg cd-timeline__container">').appendTo(resultsDiv);
-
-                $('div#tweet').html('');
-                $('<h3 style="font-size:24px">').text(data['tweet']).appendTo($('div#tweet'));
-                $('<hr>').appendTo($('div#tweet'));
-                $('<p style="font-size:24px">').text('Fake News Probability : ' + data['fake_news_prob']).appendTo($('div#tweet'));
-                
-                for (var i=0; i<data['retweeters'].length; i++) {
-                    var details = data['retweeters'][i];
-                    var div = $('<div class="cd-timeline__block">');
-                    var imgOpt, imgOptDiv;
-                    if (parseInt(details['isFake']) == 0){
-                        imgOpt = 'cd-icon-picture.svg';
-                        imgOptDiv = 'picture';
-                    } else {
-                        imgOpt = 'cd-icon-movie.svg';
-                        imgOptDiv = 'movie';
-                    }
-                    $(`<div class="cd-timeline__img cd-timeline__img--${imgOptDiv}">`).appendTo(div);
-
-                    var textDiv = $('<div class="cd-timeline__content text-component">');
-                    $('<a style="font-size:22px">')
-                        .text(details['name'])
-                        .attr('title', '<h3 style="color:white">' +details['description']+ '</h3><br><p style="color:white">Followers: ' + details['followers'] +
-                                '<br>Following: '+details['following'])
-                        .attr('href', "https://twitter.com/"+details['name'])
-                        .appendTo(textDiv).tooltip({html: "true"});
-                     var flex = $('<div class="flex flex--space-between flex--center-y">');
-                    $('<span class="cd-timeline__date" style="font-size:12px">').text(data['time'][i]).appendTo(flex);
-                    flex.appendTo(textDiv);
-                    textDiv.appendTo(div);
-                    div.appendTo(resultsDiv);
-                }
-            }, 
-            'json'
-            );
-        });
-    </script>
-</body>
-
-
-
+    <div class="header-backup"></div>
+  </body>
+  
 </html>

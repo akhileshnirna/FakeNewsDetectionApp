@@ -33,7 +33,7 @@ def get_top_friends_next_level(twitter_api,
                             'followers_count': friends[i]['followers_count'],
                             'follower': user_name,
                             'details':  friends[i],
-                            } for i in range(num_friends)
+                            } for i in range(max(num_friends, len(friends)))
                         ],
         }
         

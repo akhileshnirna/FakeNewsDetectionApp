@@ -1,7 +1,9 @@
 table {
   border: 5px;
-  width: 100%;
+  border-color: black;
+  width: 45%;
   text-align: center;
+  padding: 10px;
 }
 
 tr {
@@ -15,8 +17,12 @@ th {
 }
 
 td {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 tr:nth-child(even) {background: #BEB9B5}
 tr:nth-child(odd) {background: #FEF6EB}
+
+h2 {
+  font-size: 24px;
+}
