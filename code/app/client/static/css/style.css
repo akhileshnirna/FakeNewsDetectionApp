@@ -477,7 +477,7 @@ li a.active{
 	padding: 0;
 	font-family: 'BenchNine', sans-serif;
 	font-weight: bold;
-	
+
 }
 .contact-form{
 	padding-right: 40px;
@@ -818,4 +818,8 @@ responsive area
 
 h2 {
   font-size: 20px;
+}
+
+th,td{
+	padding: 10px
 }

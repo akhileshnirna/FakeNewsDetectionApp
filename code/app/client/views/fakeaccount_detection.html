@@ -38,7 +38,7 @@
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            
+
                             <ul class="nav navbar-nav navbar-right">
                             <li><a class="menu active" href="#home" >Home</a></li>
                             <li><a class="menu" href="#about">about us</a></li>
@@ -54,15 +54,21 @@
         </div>
     </header> <!-- end of header area -->
     <div class="header-backup"></div>
-      
+
     <section class="about text-center">
         <div class="container-fluid">
+			<div class="row">
+				<p style="font-size:22px;width=70%;align:center;">- This metric looks at tweet and analyzes the details of all the accounts that retweeted to detect which accounts are probable Spam account.
+				</p>
+				<br>
             <div class="row">
                 <h2>Fake Account Detection</h2>
+
                 <p>Enter A twitter Username</p>
                 <form id="fakeaccount" onsubmit="return false">
                     <input type="text" name="user_name"  required/>
                     <input type="submit" id="submitButton" value="Detect Fake Accounts" />
+					<button><a href="/static/docs/report.pdf#page=51">learn more</a></button>
                 </form>
             </div>
             <br>
@@ -72,18 +78,18 @@
         </div>
     </section>
     <br>
-    
+
 
     <div id="resultsDiv">
 
     </div>
-    
+
     <script src="/static/timeline/js/main.js"></script>
     <script>
         $('input#submitButton').click( function() {
             $.post( '', $('form#fakeaccount').serialize(), function(data) {
                 var data = data[0];
-                
+
                 var resultsDiv = $('div#resultsDiv');
                 resultsDiv.html(''); // Clear previous data
                 resultsDiv = $('<section class="cd-timeline js-cd-timeline col-lg-12 col-sm-12" id="results">').appendTo(resultsDiv);
@@ -94,7 +100,7 @@
                 $('<h3 style="font-size:24px">').text(data['tweet']).appendTo($('div#tweet'));
                 $('<hr>').appendTo($('div#tweet'));
                 $('<p style="font-size:24px">').text('Fake News Probability : ' + data['fake_news_prob']).appendTo($('div#tweet'));
-                
+
                 for (var i=0; i<data['retweeters'].length; i++) {
                     var details = data['retweeters'][i];
                     var div = $('<div class="cd-timeline__block">');
@@ -121,7 +127,7 @@
                     textDiv.appendTo(div);
                     div.appendTo(resultsDiv);
                 }
-            }, 
+            },
             'json'
             );
         });

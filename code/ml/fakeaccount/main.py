@@ -9,7 +9,7 @@ access_token = "795922562546970624-6S2XzPe9K2gNrHphl3OUS1tjIgIh8rQ"
 access_token_secret = "bfDz7r938dbfdfJai974vcQBeENz32VD8C4eBGZ71OECy"
 
 class FakeAccountDetectionModel():
-    
+
     def __init__(self):
       auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
       auth.set_access_token(access_token, access_token_secret)
@@ -19,19 +19,19 @@ class FakeAccountDetectionModel():
         "profile_background_tile", "profile_background_color" ,"verified"]
       self._model_path = FAKE_ACCOUNT_MODEL_PATH
       self._load_model()
-        
+
     def _load_model(self):
         model = pickle.load(open(self._model_path, "rb"))
         self._classifier = model["classifier"]
         self._scaler = model["scaler"]
-    
+
     def predict(self, user_name, max_tweets=5):
       user_account = self.api.lookup_users(screen_names=[user_name])[0]
       tweets = user_account.timeline()
       outputs = []
       for i, tweet in enumerate(tweets):
         outputs.append({})
-        outputs[i]['tweet'] = tweet.text 
+        outputs[i]['tweet'] = tweet.text
         if i==max_tweets:
           break
         retweets = self.api.retweets(tweet.id, count=1000)
@@ -63,7 +63,7 @@ class FakeAccountDetectionModel():
             details['isFake'] = 0
         fake_users.append(details)
       return fake_news_prob ** (1/len(users_details)), fake_users
-   
+
     def _parse_details_v2(self, user_details):
         """ Parses user details for prediction """
         data = []

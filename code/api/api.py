@@ -14,7 +14,7 @@ from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
 from CommunityAPI import CommunityDetection
 from FakeAccountAPI import FakeAccountDetection
-# from FakeImageAPI import FakeImageDetection
+from FakeImageAPI import FakeImageDetection
 app = Flask(__name__)
 api = Api(app)
 app.debug = True
@@ -54,14 +54,14 @@ class CredibleResources(Resource):
             credible_text_seq = model.preprocess(df_articles["articles"][i]["body"], self._body)
 
             res["results"].append({})
-            
+
             res["results"][i]["article_title"] = df_articles["articles"][i]["title"]
             res["results"][i]["article_url"] = df_articles["articles"][i]["url"]
-            
+
             res["results"][i]["source"] = df_articles["articles"][i]["source"]["title"]
             res["results"][i]["source_url"] = df_articles["articles"][i]["source"]["uri"]
             res["results"][i]["source_ranking"] = df_articles["articles"][i]["source"]["ranking"]["importanceRank"]
-            
+
             res["results"][i]["sentiment"] = df_articles["articles"][i]["sentiment"]
 
             res["results"][i]["credibility_score"] = model.predict(claim_text_seq, credible_text_seq).tolist()[0][0]
@@ -140,9 +140,9 @@ class WebSpamCheck(Resource):
 api.add_resource(WebSpamCheck,'/spamcheck')
 api.add_resource(CredibleResources, '/credible')
 api.add_resource(CommunityDetection, '/community')
-# api.add_resource(FakeImageDetection, '/fakeimage')
+api.add_resource(FakeImageDetection, '/fakeimage',  methods=[ 'POST'])
 api.add_resource(FakeAccountDetection, '/fakeaccount')
 api.add_resource(FakeWebsite,'/websitecheck')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=3001, host="0.0.0.0")

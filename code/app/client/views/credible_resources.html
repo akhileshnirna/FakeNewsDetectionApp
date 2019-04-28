@@ -11,7 +11,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
-    <!-- <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'> -->
+    <link rel="stylesheet" href="/static/css/credible.css" type='text/css'>
 </head>
 <body>
     	<!-- ====================================================
@@ -39,7 +39,7 @@
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            
+
                             <ul class="nav navbar-nav navbar-right">
                             <li><a class="menu active" href="#home" >Home</a></li>
                             <li><a class="menu" href="#about">about us</a></li>
@@ -57,16 +57,24 @@
     <br>
     <br>
     <br>
-      
+
     <section class="about text-center">
         <div class="container-fluid">
             <div class="row">
+				<div class="row">
+					<p style="font-size:22px;width=70%;align:center;" class="col-lg-12 col-sm-12">
+						- This metric is based on the stance of articles published by reputable news sources and fact
+checking organizations.
+					</p>
+					<br>
+				</div>
                 <h2>Credible Resources Check</h2>
                 <p>Enter A statement</p>
                 <form id="credible" onsubmit="return false">
                     <input type="text" name="claim"  required/>
                     <input type="submit" id="submitButton" value="Fact Check" />
-                </form>
+					<button><a href="/static/docs/report.pdf#page=56">learn more</a></button>
+				</form>
             </div>
         </div>
     </section>
@@ -92,7 +100,7 @@
                 console.log(data);
                 var resultsDiv = $('div#results');
                 resultsDiv.html('');
-                // Add heading 
+                // Add heading
                 var heading = $("<h3 id='output'>");
                 heading.attr('innerHTML', 'Output');
                 heading.appendTo(resultsDiv);

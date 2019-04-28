@@ -20,7 +20,7 @@ access_token_secret = "bfDz7r938dbfdfJai974vcQBeENz32VD8C4eBGZ71OECy"
 
 
 class CommunityDetectionModel():
-    
+
     def __init__(self):
         self.twitter = Twitter(auth=OAuth(
                 access_token,
@@ -29,7 +29,7 @@ class CommunityDetectionModel():
                 consumer_secret
                 )
         )
-    
+
     def graph_it(self, user_name, num_friends_at_depths=[2, 2, 2], n_clusters=3):
         self.user_name = user_name
         cache_file = open(CACHE_PATH, 'a+')
@@ -50,30 +50,30 @@ class CommunityDetectionModel():
         else:
             connections = cache_data[cache_key]
         cache_file.close()
-            
+
         connection_graph = generate_graph_from_connections(connections)
         viz_graph(connection_graph, save_graph=True, file_name='connections.png')
         # connection_graph = b64encode(open('demo.png', 'rb').read())
         # connection_graph = connection_graph.decode('utf-8')
 
         docs = self._gen_docs(connections)
-        
+
         description_vectors = vectorize(docs)
         vector_values = list(description_vectors.values())
-        
+
         clustered_labels = spectral_cluster(vector_values, n_clusters=n_clusters)
 
         for user_name, cluster_label in zip(description_vectors.keys(), clustered_labels):
             docs[user_name]['community'] = str(cluster_label)
 
         reduced_vectors = pca(vector_values)
-        
+
         self.gen_graph(reduced_vectors, clustered_labels, description_vectors)
         # community_graph = b64encode(open('graph.png', 'rb').read())
         # community_graph = community_graph.decode('utf-8')
 
         communities = fake_community_detection(docs)
-        
+
         return {
             # 'community_graph': community_graph,
             # 'connection_graph': connection_graph,
@@ -94,7 +94,7 @@ class CommunityDetectionModel():
 
         for i, (vec, l, name) in enumerate(zip(reduced_vectors, clustered_labels, description_vectors)):
             x, y, z = vec
-            ax.scatter(x, y, z, s=100, color=colors, label=name, cmap='RdPu')
+            ax.scatter(x, y, z, s=100, color=colors[l], label=name, cmap='RdPu')
             ax.text(x+0.1*x, y+0.1*y, z+0.1*z, name, fontsize=20)
 
         plt.tight_layout()

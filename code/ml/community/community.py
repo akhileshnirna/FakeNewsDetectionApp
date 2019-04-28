@@ -30,13 +30,13 @@ def cosine_similarity(v1, v2):
 """ cluster a set of vectors """
 def spectral_cluster(vectors, n_clusters=None):
     from sklearn.cluster import SpectralClustering
-    
+
     # if not provided, n_clusters = min(2, cube_root(num_vectors))
     if not n_clusters:
         n_clusters = int(np.floor(len(vectors) ** 1/3))
         if n_clusters == 0:
             n_clusters = 2
-    
+
     cluster_clf = SpectralClustering(n_clusters=n_clusters, n_jobs=8)
     labels = cluster_clf.fit_predict(vectors)
 
@@ -53,14 +53,14 @@ def pca(vectors, n_components=3):
 """ detect fake communities """
 def fake_community_detection(docs):
     fake_account_model = fake_model_dict["classifier"]
-    fake_account_scaler = fake_model_dict["scaler"]    
-    
+    fake_account_scaler = fake_model_dict["scaler"]
+
     communities = dict()
     for user_name in docs:
         details = docs[user_name]['details']
         parsed_details = parse_user(details)
         scaled_details = fake_account_scaler.transform(parsed_details.reshape(1, -1))
-        
+
         fake_probabilty = fake_account_model.predict_proba(scaled_details)
         community_num = docs[user_name]['community']
 
@@ -68,11 +68,11 @@ def fake_community_detection(docs):
             communities[community_num] = dict()
             communities[community_num]['users'] = []
             communities[community_num]['fake_proba_list'] = []
-        
+
         docs[user_name]['fake_proba'] = fake_probabilty[0][0]
         communities[community_num]['users'].append(user_name)
         communities[community_num]['fake_proba_list'].append(str(fake_probabilty[0][0]))
-    
+
     for community_num in communities:
         prob = 1
         for p in communities[community_num]['fake_proba_list']:
@@ -82,13 +82,13 @@ def fake_community_detection(docs):
 
     return communities
 
-    
+
 
 """ Parses user details for prediction """
 def parse_user(user_details):
-    useful_columns = ["statuses_count", "followers_count", "friends_count", 
-        "favourites_count", "listed_count", "default_profile", 
-        "profile_banner_url", "profile_background_tile", 
+    useful_columns = ["statuses_count", "followers_count", "friends_count",
+        "favourites_count", "listed_count", "default_profile",
+        "profile_banner_url", "profile_background_tile",
         "profile_background_color" ,"verified"]
     data = []
     for col in useful_columns:
@@ -116,5 +116,3 @@ def parse_user(user_details):
                 print("NO ATTR: ", col)
                 data.append(0)
     return np.array(data)
-     
-

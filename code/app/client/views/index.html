@@ -15,7 +15,7 @@
 	<link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	
+
 	<!-- ====================================================
 	header section -->
 	<header class="top-header">
@@ -41,12 +41,12 @@
 
 					    <!-- Collect the nav links, forms, and other content for toggling -->
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					      
+
 					      <ul class="nav navbar-nav navbar-right">
 					        <li><a class="menu active" href="#home" >Home</a></li>
-					        <li><a class="menu" href="#about">about us</a></li>
-					        <li><a class="menu" href="#service">our services </a></li>
-					        <li><a class="menu" href="#team">our team</a></li>
+					        <li><a class="menu" href="#about">the project</a></li>
+					        <li><a class="menu" href="#service">our goals </a></li>
+					        <li><a class="menu" href="#team">the metrics</a></li>
 					        <li><a class="menu" href="#contact"> contact us</a></li>
 					      </ul>
 					    </div><!-- /navbar-collapse -->
@@ -57,8 +57,8 @@
 		</div>
 	</header> <!-- end of header area -->
 
-			
-			
+
+
 
 			<section class="slider" id="home">
 				<div class="container-fluid">
@@ -73,31 +73,31 @@
 					                <div class="carousel-caption">
 				               			<h2>Minor Project</h2>
 				               			<p>Understanding and Tackling the Problem of Fake News</p>
-				               			<button>learn more</button>
+				               			<button><a href="/static/docs/report.pdf">learn more</a></button>
 					                </div>
 					            </div>
 					            <div class="item">
-					            	<img src="/static/img/slide-two.jpg" alt="">
-					                <div class="carousel-caption">
+					            	<img src="/static/img/stance.jpg" alt="">
+					                <div class="carousel-caption" style="color:black;">
 				               			<h2>Stance Detection</h2>
-				               			<p>Finding Discrepancies between am Article and its Headline</p>
+				               			<p style="color:black;">Finding Discrepancies between am Article and its Headline</p>
 				               			<button>learn more</button>
 					                </div>
 					            </div>
 					            <div class="item">
 					            	<img src="/static/img/slide-three.jpg" alt="">
-					                <div class="carousel-caption">
+					                <div class="carousel-caption" style="color:green;">
 				               			<h2>Fake Website Detection</h2>
-				               			<p>Analyzing a website to determine its authenticity</p>
-				               			<button>learn more</button>
+				               			<p style="color:green;">Analyzing a website to determine its authenticity</p>
+				               			<button  onclick="window.location='http://localhost:9000/fakeWebsite'">learn more</button>
 					                </div>
 					            </div>
 					            <div class="item">
 					            	<img src="/static/img/slide-four.jpg" alt="">
-					                <div class="carousel-caption">
+					                <div class="carousel-caption" style="color:green;">
 				               			<h2>Credible Resources</h2>
-				               			<p>Automated Fact Cheking</p>
-				               			<button>learn more</button>
+				               			<p style="color:green;">Automated Fact Cheking</p>
+				               			<button  onclick="window.location='http://localhost:9000/credible'">learn more</button>
 					                </div>
 											</div>
 											<div class="item">
@@ -105,22 +105,22 @@
 					                <div class="carousel-caption">
 				               			<h2>Fake Image Detection</h2>
 				               			<p>Detecting Discrepancies in Images</p>
-				               			<button>learn more</button>
+				               			<button  onclick="window.location='http://localhost:9000/fakeimage'">learn more</button>
 					                </div>
 											</div>
 											<div class="item">
 					            	<img src="/static/img/slide-six.png" alt="">
-					                <div class="carousel-caption">
+					                <div class="carousel-caption" style="color:black;">
 				               			<h2>Fake Community Detection</h2>
-				               			<p>Detecting Communities on social media</p>
+				               			<p style="color:black;">Detecting Communities on social media</p>
 				               			<button onclick="window.location='http://localhost:9000/community'">learn more</button>
 					                </div>
 											</div>
 											<div class="item">
-					            	<img src="/static/img/slide-one.jpg" alt="">
-					                <div class="carousel-caption">
+					            	<img src="/static/img/fakeaccount.jpg" alt="">
+					                <div class="carousel-caption" style="color:black;">
 				               			<h2>Fake Account Detection</h2>
-				               			<p>Detecting Fake Accounts on social media</p>
+				               			<p style="color:black;">Detecting Fake Accounts on social media</p>
 				               			<button onclick="window.location='http://localhost:9000/fakeaccount'">learn more</button>
 					                </div>
 					            </div>
@@ -158,12 +158,11 @@
 
 								<div class="about-details">
 									<div class="pentagon-text">
-										<h1>T</h1>
+										<h1>R</h1>
 									</div>
 
-									<h3>Stance Detection</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
-								</div>
+									<h3>Research</h3>
+									<p>In this project we have research about the origin of fake, it spread and how to curb its growth. We provide an indepth analysis on these avenues in the project report.</p> </div>
 							</div>
 						</div>
 
@@ -175,11 +174,11 @@
 
 								<div class="about-details">
 									<div class="pentagon-text">
-										<h1>B</h1>
+										<h1>I</h1>
 									</div>
 
-									<h3>Business Consulting</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+									<h3>Implentation</h3>
+									<p>We have built a framework of metrics that can help analyze a news article comprehensively to provide a detailed analysis on a News Article / Social Media Account.</p>
 								</div>
 							</div>
 						</div>
@@ -193,11 +192,11 @@
 
 								<div class="about-details">
 									<div class="pentagon-text">
-										<h1>F</h1>
+										<h1>P</h1>
 									</div>
 
-									<h3>Financial Consulting</h3>
-									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+									<h3>Product</h3>
+									<p>We have built a web platform around the metrics mentioned below to help demonstrate their effectiveness in reducing the impact of fake news. Along with which API access to individual metic has been provided.</p>
 								</div>
 							</div>
 						</div>
@@ -212,50 +211,39 @@
 			<section class="service text-center" id="service">
 				<div class="container">
 					<div class="row">
-						<h2>our services</h2>
-						<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</h4>
+						<h2>our Goals</h2>
+						<h4>These are motivations for pursuing this project</h4>
 
-						<div class="col-md-3 col-sm-6">
+						<div class="col-md-4 col-sm-4">
 							<div class="single-service">
 								<div class="single-service-img">
 									<div class="service-img">
 										<img class="img-responsive" src="/static/img/service1.png" alt="">
 									</div>
 								</div>
-								<h3>Consulting</h3>
+								<h3>Scope of the project</h3>
 							</div>
 						</div>
 
-						<div class="col-md-3 col-sm-6">
+						<div class="col-md-4 col-sm-4">
 							<div class="single-service">
 								<div class="single-service-img">
 									<div class="service-img">
 										<img class="img-responsive" src="/static/img/service2.png" alt="">
 									</div>
 								</div>
-								<h3>Financial</h3>
+								<h3>Impact on Soceity</h3>
 							</div>
 						</div>
 
-						<div class="col-md-3 col-sm-6">
+						<div class="col-md-4 col-sm-4">
 							<div class="single-service">
 								<div class="single-service-img">
 									<div class="service-img">
 										<img class="img-responsive" src="/static/img/service3.png" alt="">
 									</div>
 								</div>
-								<h3>Tax Help</h3>
-							</div>
-						</div>
-
-						<div class="col-md-3 col-sm-6">
-							<div class="single-service">
-								<div class="single-service-img">
-									<div class="service-img">
-										<img class="img-responsive" src="/static/img/service4.png" alt="">
-									</div>
-								</div>
-								<h3>Money</h3>
+								<h3>Business Idea</h3>
 							</div>
 						</div>
 					</div>
@@ -269,9 +257,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="team-heading text-center">
-							<h2>our team</h2>
+							<h2>The Metrics</h2>
 
-							<h4>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled</h4>
+							<h4>Each Metric authenticates a specific part of the News using Latest Machine Learning, NLP and Rule  based approached</h4>
 						</div>
 
 						<div class="col-md-2 single-member col-sm-4">
@@ -281,18 +269,19 @@
 
 							<div class="person-detail">
 								<div class="arrow-bottom"></div>
-								<h3>Mr. Graham</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+								<h3>Credible Resouces</h3>
+								<p>The aim of this module is first to identify important keywords in the input article text, then to conduct a thorough search and collect all articles that may be relevant to them followed by establishing the credibility of the claim by understanding the stance of the articles published by certified news outlets on the same topic. </p>
 							</div>
-						
+
 						</div>
 
 						<div class="col-md-2 single-member col-sm-4">
 
 							<div class="person-detail">
 								<div class="arrow-top"></div>
-								<h3>Mr. David</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+								<h3>Community Detection</h3>
+								<p>Social media is a predominant and influential source from where almost everyone learns about the ongoings in the world. Hence, it is a vulnerable area in which perpetrators can try spreading fake news. This metric is focused on identifying specific users belonging to such communities that might be spreading fake news.
+</p>
 							</div>
 							<div class="person">
 								<img class="img-responsive" src="/static/img/item2.jpg" alt="member-2">
@@ -304,16 +293,15 @@
 							</div>
 							<div class="person-detail">
 								<div class="arrow-bottom"></div>
-								<h3>Mr. Hovid</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-							</div>
+								<h3>Fake Website Detection</h3>
+								<p>This metric is targeted to find websites created for propagating fake news,  by means of determining the authenticity of the website using the URL. Another aspect being explored it the ability to check if the website content is spam.</div>
 						</div>
 
 						<div class="col-md-2 single-member col-sm-4">
 							<div class="person-detail">
 								<div class="arrow-top"></div>
-								<h3>Mr Jasak</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+								<h3>Fake Image Detection</h3>
+								<p>Social media platforms such as twitter have a limit on the number of words that can be used for posting. In such situations, people often resort to using images for spreading information. this module detects whether a given image is potentially fake.  </p>
 							</div>
 							<div class="person">
 								<img class="img-responsive" src="/static/img/item4.jpg" alt="member-4">
@@ -327,22 +315,9 @@
 
 							<div class="person-detail">
 								<div class="arrow-bottom"></div>
-								<h3>Mr. Joy Ka</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
+								<h3>Fake Account Detection</h3>
+								<p>This metric looks at tweet and analyzes the details of all the accounts that retweeted to detect which accounts are probable Spam account.</p>
 							</div>
-						</div>
-
-						<div class="col-md-2 single-member col-sm-4">
-
-							<div class="person-detail">
-								<div class="arrow-top"></div>
-								<h3>Mr. Mikari</h3>
-								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p>
-							</div>
-							<div class="person">
-								<img class="img-responsive" src="/static/img/item6.jpg" alt="member-5">
-							</div>
-
 						</div>
 					</div>
 				</div>
@@ -373,7 +348,7 @@
 										<ul><li><i class="fa fa-map-marker"></i><span>Address:</span> 123 Some Street , California, US, CP 123</li></ul>
 										<ul><li><i class="fa fa-phone"></i><span>Phone:</span> (01) 999-1235</li></ul>
 										<ul><li><i class="fa fa-fax"></i><span>Fax:</span> (01) 999-1234</li></ul>
-										<ul><li><i class="fa fa-envelope"></i><span>Email:</span> info@domain.com</li></ul>
+										<ul><li><i class="fa fa-envelope"></i><span>Email:</span> fakenews@factcheckers.com</li></ul>
 									</div>
 								</div>
 
@@ -415,7 +390,7 @@
 
 
 
-	
+
 
 	<!-- script tags
 	============================================================= -->
@@ -425,6 +400,6 @@
 	<script src="/static/js/smoothscroll.js"></script>
 	<script src="/static/js/bootstrap.min.js"></script>
 	<script src="/static/js/custom.js"></script>
-	
+
 </body>
 </html>

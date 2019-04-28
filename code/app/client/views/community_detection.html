@@ -39,7 +39,7 @@
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            
+
                             <ul class="nav navbar-nav navbar-right">
                             <li><a class="menu active" href="#home" >Home</a></li>
                             <li><a class="menu" href="#about">about us</a></li>
@@ -54,18 +54,25 @@
             </div>
         </div>
     </header> <!-- end of header area -->
-    <br>
-    <br>
-    <br>
-      
+    <div class="header-backup"></div>
+
     <section class="about text-center">
-        <div class="container-fluid">
+        <div class="container-fluid" >
+			<div class="row">
+				<p style="font-size:22px;width=70%;align:center;" class="col-lg-6 col-sm-6">
+					- Social media is a predominant and influential source from where almost everyone learns about the ongoings in the world. Hence, it is a vulnerable area in which perpetrators can try spreading fake news.
+					- This metric is focused on identifying specific users belonging to such communities that might be spreading fake news.
+				</p>
+			</div>
+
+			<br>
             <div class="row">
                 <h2>Community Detection</h2>
                 <p>Enter A twitter Username</p>
                 <form id="community" onsubmit="return false">
                     <input type="text" name="user_name"  required/>
                     <input type="submit" id="submitButton" value="Detect Communities" />
+					<button><a href="/static/docs/report.pdf#page=54">learn more</a></button>
                 </form>
             </div>
         </div>
@@ -88,7 +95,7 @@
                 var resultsDiv = $('div#results');
                 // First we clear any previous output if present
                 resultsDiv.html('');
-                // Add heading 
+                // Add heading
                 var heading = $("<h3 id='output'>");
                 heading.attr('innerHTML', 'Output');
                 heading.appendTo(resultsDiv);
@@ -124,7 +131,7 @@
                 $('<th width="100%">').text('Accounts Table').appendTo('<tr>').appendTo(tableAccounts);
                 var tableCommunities = $('<table class="community-details col-lg-4 col-sm-4">');
                 $('<th width="100%">').text('Communities Table').appendTo('<tr>').appendTo(tableCommunities);
-        
+
                 var tr =$('<tr style="font-size:28px;color:#19260C;background-color:#7FBF3F">');
                 $('<td>').attr('align', 'center').text('Account Name').appendTo(tr);
                 $('<td>').text('Fake Probability').appendTo(tr);

@@ -7,14 +7,14 @@ from os.path import join
 def generate_graph_from_connections(connections):
     importlib.reload(nx)
     G = nx.Graph()
-    
+
     for node in connections:
         for adjacent_node in connections[node]['friends']:
             adj_node_label = adjacent_node['name']
             G.add_edge(node, adj_node_label)
-    
+
     return G
-    
+
 def viz_graph(G, save_graph=False, file_name='connections.png'):
     plt.clf()
     plt.figure(num=None, figsize=(12,12), dpi=200)

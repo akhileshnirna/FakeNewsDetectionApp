@@ -1,0 +1,28 @@
+table {
+  border: 5px;
+  border-color: black;
+  width: 60%;
+  text-align: center;
+  padding: 10px;
+}
+
+tr {
+  text-align: center;
+}
+
+th {
+  font-size: 40px;
+  background-color: #C25B56;
+  color: #FFFFFF;
+}
+
+td {
+  font-size: 20px;
+}
+
+tr:nth-child(even) {background: #BEB9B5}
+tr:nth-child(odd) {background: #FEF6EB}
+
+h2 {
+  font-size: 24px;
+}

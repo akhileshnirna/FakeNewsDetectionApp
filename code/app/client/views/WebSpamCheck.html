@@ -58,20 +58,25 @@
 
     <section class="about text-center">
         <div class="container-fluid">
+			<div class="row">
+				<p style="font-size:22px;width=70%;align:center;">
+					  <ul style="font-size:22px;width=70%;align:center;">
+						<li>Most of the spam websites consist of word count between 750 and 1500 words</li>
+						<li>Spam pages tend to use far more KeyWords(words other than "and","or","I","it",etc) in the TITLE compared to non-spam pages.</li>
+						<li>The Website's Top Level Domain will be checked whether it's part of the most abused/misused list of domains </li>
+						<li>Websites with a high percentage of anchor text (to standard text) are more likely to be spam sites.</li>
+					  </ul>
+				</p>
+				<br>
+            <div class="row">
             <div class="row">
 
                 <h2>Web Spam Check </h2>
-              <p>
-                <ul>
-                  <li>Most of the spam websites consist of word count between 750 and 1500 words</li>
-                  <li>Spam pages tend to use far more KeyWords(words other than "and","or","I","it",etc) in the TITLE compared to non-spam pages.</li>
-                  <li>The Website's Top Level Domain will be checked whether it's part of the most abused/misused list of domains </li>
-                  <li>Websites with a high percentage of anchor text (to standard text) are more likely to be spam sites.</li>
-                </ul>
-              </p>
+
                 <form id="spamcheck" onsubmit="return false" >
                     <input type="text" placeholder="Enter URL" name="url" required>
                     <input type="submit" id="submitButton"  name="submit" value="Get Results">
+					<button><a href="/static/docs/report.pdf#page=58">learn more</a></button>
                 </form>
             </div>
         </div>

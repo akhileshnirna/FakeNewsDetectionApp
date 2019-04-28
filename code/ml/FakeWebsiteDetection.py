@@ -8,7 +8,7 @@ import tld
 import xgboost
 import os
 
-MODEL_PATH = r'C:\Users\joavi\Documents\git\FakeNewsDetectionApp\github_project\FakeNewsDetectionApp\code\ml\models'
+MODEL_PATH = r'../ml/models/'
 class MLClassifier():
     def __init__(self):
         self.model = pickle.load(open(os.path.join(MODEL_PATH, 'xgb_model.dat'), 'rb'))
@@ -169,7 +169,7 @@ class RuleBasedClassifier():
         allowed = re.compile("(?!-)[A-Z\d\-\_]{1,63}(?<!-)$", re.IGNORECASE)
         return all(allowed.match(x) for x in hostname.split("."))
 
-    '''   
+    '''
     #This function returns the opposite
     def hasUnicode(url):
         hname = getHostName(url)
@@ -253,6 +253,3 @@ class RuleBasedClassifier():
                or (features['slashes_count'] >= 5 and features['dots_count'] > 4 and features['uses_TLS'] and
                    features['contains_tld'] and features['url_length'] > 75) \
                or (features['contains_unicode'] and features['terms_count'] > 4 and features['url_length'] > 75)
-
-
-

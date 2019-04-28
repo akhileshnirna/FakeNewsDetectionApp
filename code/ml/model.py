@@ -6,23 +6,24 @@ import pickle
 import tensorflow as tf
 from uuid import uuid4
 from nltk import download
-from nltk.corpus import stopwords 
+from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 download('stopwords')
 download('punkt')
 
 import numpy as np
 from datetime import datetime
-from sklearn.model_selection import train_test_split 
+from sklearn.model_selection import train_test_split
 from keras.models import load_model
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing import sequence
 
 import retinasdk
+from ml.vars import STANCE_DETECTION_DATA
 
 from ml.util import *
 
-class CredibleResourcesModel(object):        
+class CredibleResourcesModel(object):
     def __init__(self):
         self._sources = source_uri
         self._er = EventRegistry(apiKey = EVENT_REGISTRY_API_KEY)
@@ -30,18 +31,18 @@ class CredibleResourcesModel(object):
         self._uid = str(uuid4())
 
         self._clfPath = '../ml/models/glove100d.hdf5'
-        
+
         self.model = load_model(self._clfPath)
         self.graph = tf.get_default_graph()
 
-        self._preload_path = "../ml/data/data_dump_glove.data"
+        self._preload_path = STANCE_DETECTION_DATA
         self._dataset = pickle.load(open(self._preload_path, "rb"))
         self._train_data = self._dataset["X_train"]
         self._train_labels = self._dataset["Y_train"]
         self._test_data = self._dataset["X_test"]
 
         self._tokenizer = self.fit_tokenizer()
-    
+
     def find_phrases(self, claim_text):
         # file paths
         ip = "../ml/data/input_" + self._uid + ".json"
@@ -61,7 +62,7 @@ class CredibleResourcesModel(object):
             for graf in parse_doc(json_iter(ip)):
                 f.write("%s\n" % pretty_print(graf._asdict()))
 
-        # Collect and normalize the key phrases from a parsed document      
+        # Collect and normalize the key phrases from a parsed document
         graph, ranks = text_rank(op1)
         render_ranks(graph, ranks)
 
@@ -77,7 +78,7 @@ class CredibleResourcesModel(object):
         # remove stop words from each phrase
         stop_words = set(stopwords.words('english'))
         for index, phrase in enumerate(phrases):
-            word_tokens = word_tokenize(phrase) 
+            word_tokens = word_tokenize(phrase)
             phrase = " ".join([w for w in word_tokens if not w in stop_words])
             phrases[index] = phrase
 
@@ -93,7 +94,7 @@ class CredibleResourcesModel(object):
                 continue
 
         return phrases_final
-    
+
     def store_corpus(self, data):
         # TODO: store collected articles in MongoDB instead of json file
         corpus = []
@@ -111,7 +112,7 @@ class CredibleResourcesModel(object):
                 f.write(json.dumps(corpus_list, indent=2))
 
 
-    
+
     def collect_articles(self, phrase_list):
         it = QueryArticlesIter(
                 keywords = QueryItems.AND(phrase_list),
@@ -122,7 +123,7 @@ class CredibleResourcesModel(object):
                 dateStart = datetime(2019, 1, 1)
         )
 
-        res = it.execQuery(self._er, 
+        res = it.execQuery(self._er,
                             sortBy = "rel", # sourceAlexaGlobalRank, socialScore, sourceImportance
                             maxItems = 10,
                             returnInfo = ReturnInfo(
@@ -137,14 +138,14 @@ class CredibleResourcesModel(object):
                                 )
                             )
                         )
-        
+
         # create json structure for storage
         data = {}
         data["uid"] = self._uid
         data["articles"] = []
         for art in res:
             data["articles"].append(art)
-        
+
         # append collected data to file to build corpus
         # self.store_corpus(data)
 
@@ -152,7 +153,7 @@ class CredibleResourcesModel(object):
 
     def get_tokenizer(self):
         return self._tokenizer
-    
+
     def fit_tokenizer(self):
         X_train, X_test, y_train, y_test = train_test_split(self._train_data, self._train_labels, test_size=0.2, random_state=101)
         X_train_headlines = [i[0] for i in X_train]
@@ -168,7 +169,7 @@ class CredibleResourcesModel(object):
 
         # store tokenizer
         return tokenizer
-    
+
     def preprocess(self, tokenize_text, max_words):
         # padding
         # max_words_headline = 70
@@ -178,15 +179,13 @@ class CredibleResourcesModel(object):
         text_seq = sequence.pad_sequences(text_seq, maxlen=max_words)
 
         return text_seq
-    
+
     def predict(self, claim_text_seq, credible_text_seq):
         with self.graph.as_default():
             pred = self.model.predict([claim_text_seq, credible_text_seq])
         return pred
-    
+
     def semantic_similarity(self, claim_text, article_text):
         # returns an object of metric class
         metrics = self._cortical_client.compare(json.dumps([{"text": claim_text}, {"text": article_text}])).__dict__
         return metrics
-
-        

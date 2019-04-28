@@ -7,20 +7,17 @@ import io
 model = FakeImageDetectionModel()
 
 parser = reqparse.RequestParser()
-parser.add_argument('im_b64')
+parser.add_argument('b64_image')
 
 class FakeImageDetection(Resource):
-    def __init__(self):
-        self.model = model
-    
-    def post(self):
-        # use parser and find the user's query
-        args = parser.parse_args()
-        im_b64 = b64.b64decode(args['im_b64'])
-        image = Image.open(io.BytesIO(im_b64))
-        image = cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
+	def __init__(self):
+		self.model = model
 
+	def post(self):
+			# use parser and find the user's query
+			args = parser.parse_args()
+			image = args['b64_image']
 
-        output = model.detect(image)
-        res = output
-        return res, 200
+			output = model.detect(image)
+			res = {}
+			return res, 200

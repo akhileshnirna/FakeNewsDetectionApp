@@ -13,7 +13,7 @@ def get_top_friends_next_level(twitter_api,
     queue,
     connections,
     found_names):
-    
+
     names = queue.copy()
     l = len(queue)
     found_names.update(queue)
@@ -23,7 +23,7 @@ def get_top_friends_next_level(twitter_api,
         user_name = names.pop(0)
         friends = twitter_api.friends.list(screen_name = user_name, count=200)
         friends = friends['users']
-        
+
         friends.sort(key=lambda fr: fr['followers_count'], reverse=True)
         friends = list(filter(lambda fr: fr['screen_name'] not in found_names, friends))
         # print(friends)
@@ -33,11 +33,10 @@ def get_top_friends_next_level(twitter_api,
                             'followers_count': friends[i]['followers_count'],
                             'follower': user_name,
                             'details':  friends[i],
-                            } for i in range(max(num_friends, len(friends)))
+                            } for i in range(min(num_friends, len(friends)))
                         ],
         }
-        
+
         queue.extend([ friends[i]['screen_name'] for i in range(num_friends)])
 
     del queue[:l]
-    

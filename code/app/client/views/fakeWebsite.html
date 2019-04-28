@@ -5,13 +5,14 @@
     <title>Community Detection</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
     <script type="text/javascript" src="/static/js/lightbox.js" ></script>
-    <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'>
+
 	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+	<link rel="stylesheet" href="/static/css/fake_website.css" type='text/css'>
 </head>
 <body>
     	<!-- ====================================================
@@ -56,15 +57,23 @@
     </header> <!-- end of header area -->
     <div class="header-backup"></div>
 
+
+
     <section class="about text-center">
         <div class="container-fluid">
             <div class="row">
+				<p style="font-size:22px;width=70%;align:center;" class="col-lg-12 col-sm-12">
+					- This metric makes use of features of URL to detect whether a given URL is potentially phishing or not.<br>
+					- Any given URL was passed through a Rule Based Classifier as proposed in (paper name) and a Machine Learning based Classifier.
+				</p>
+				<br>
 
                 <h2>Fake Website Check </h2>
                 <p>This metric uses features of the URL to identify whether the given url is potentially phishing or non - phishing.</p>
                 <form id="fkwebsite" onsubmit="return false" >
                     <input type="text" placeholder="Enter URL" name="url" required>
                     <input type="submit" id="submitButton"  name="submit" value="Check Veracity">
+					<button><a href="/static/docs/report.pdf#page=58">learn more</a></button>
                 </form>
             </div>
         </div>
