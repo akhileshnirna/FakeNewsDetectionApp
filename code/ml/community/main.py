@@ -30,7 +30,7 @@ class CommunityDetectionModel():
                 )
         )
 
-    def graph_it(self, user_name, num_friends_at_depths=[2, 2, 2], n_clusters=3):
+    def graph_it(self, user_name, num_friends_at_depths=[3, 4], n_clusters=3):
         self.user_name = user_name
         cache_file = open(CACHE_PATH, 'a+')
         cache_file.seek(0)
@@ -53,9 +53,6 @@ class CommunityDetectionModel():
 
         connection_graph = generate_graph_from_connections(connections)
         viz_graph(connection_graph, save_graph=True, file_name='connections.png')
-        # connection_graph = b64encode(open('demo.png', 'rb').read())
-        # connection_graph = connection_graph.decode('utf-8')
-
         docs = self._gen_docs(connections)
 
         description_vectors = vectorize(docs)
@@ -69,14 +66,10 @@ class CommunityDetectionModel():
         reduced_vectors = pca(vector_values)
 
         self.gen_graph(reduced_vectors, clustered_labels, description_vectors)
-        # community_graph = b64encode(open('graph.png', 'rb').read())
-        # community_graph = community_graph.decode('utf-8')
 
         communities = fake_community_detection(docs)
 
         return {
-            # 'community_graph': community_graph,
-            # 'connection_graph': connection_graph,
             'communities': communities
         }
 

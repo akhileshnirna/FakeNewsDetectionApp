@@ -14,7 +14,7 @@ from ml.WebSpamDetection import WebSpamDetect
 from ml.model import CredibleResourcesModel
 from CommunityAPI import CommunityDetection
 from FakeAccountAPI import FakeAccountDetection
-from FakeImageAPI import FakeImageDetection
+# from FakeImageAPI import FakeImageDetection
 app = Flask(__name__)
 api = Api(app)
 app.debug = True
@@ -25,11 +25,17 @@ parser = reqparse.RequestParser()
 parser.add_argument('claim_text')
 parser.add_argument('url')
 
+credible_class_mappings = {
+    0: 'Unrelated',
+    1: 'Discussess',
+    2: 'Agrees',
+    3: "Disagrees"
+}
+
 
 class CredibleResources(Resource):
     def __init__(self, *args, **kwargs):
-        self._headline = 70
-        self._body = 1000
+        pass
 
     def post(self):
         # use parser and find the user's query
@@ -43,7 +49,7 @@ class CredibleResources(Resource):
         df_articles = model.collect_articles(keywords)
 
         # preprocess input data
-        claim_text_seq = model.preprocess(claim_text, self._headline)
+        claim_text_seq = model.preprocess(claim_text, "headline")
 
         # get stance of each article
         res = {}
@@ -51,7 +57,7 @@ class CredibleResources(Resource):
         for i in range(len(df_articles["articles"])):
             res["uid"] = df_articles["uid"]
 
-            credible_text_seq = model.preprocess(df_articles["articles"][i]["body"], self._body)
+            credible_text_seq = model.preprocess(df_articles["articles"][i]["body"], "body")
 
             res["results"].append({})
 
@@ -64,7 +70,9 @@ class CredibleResources(Resource):
 
             res["results"][i]["sentiment"] = df_articles["articles"][i]["sentiment"]
 
-            res["results"][i]["credibility_score"] = model.predict(claim_text_seq, credible_text_seq).tolist()[0][0]
+            pred = model.predict(claim_text_seq, credible_text_seq)
+            pred = "{0} ({1:.2f})".format(credible_class_mappings[np.argmax(pred)], np.max(pred))
+            res["results"][i]["credibility_score"] = pred
             res["results"][i]["cortical_semantic_score"] = model.semantic_similarity(claim_text, df_articles["articles"][i]["body"])
 
         return res, 200
@@ -124,6 +132,7 @@ class WebSpamCheck(Resource):
 
         detector = WebSpamDetect()
 
+        res['url'] = url 
         res['words_count'] = detector.countWords(url)
         res['title_len'] = detector.getTitleLength(url)
         res['tld_data'] = detector.TLDcheck(url)
@@ -140,7 +149,7 @@ class WebSpamCheck(Resource):
 api.add_resource(WebSpamCheck,'/spamcheck')
 api.add_resource(CredibleResources, '/credible')
 api.add_resource(CommunityDetection, '/community')
-api.add_resource(FakeImageDetection, '/fakeimage',  methods=[ 'POST'])
+# api.add_resource(FakeImageDetection, '/fakeimage',  methods=[ 'POST'])
 api.add_resource(FakeAccountDetection, '/fakeaccount')
 api.add_resource(FakeWebsite,'/websitecheck')
 

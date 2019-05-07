@@ -30,7 +30,7 @@ class CredibleResourcesModel(object):
         self._cortical_client = retinasdk.FullClient(CORTICAL_API_KEY, apiServer="http://api.cortical.io/rest", retinaName="en_associative")
         self._uid = str(uuid4())
 
-        self._clfPath = '../ml/models/glove100d.hdf5'
+        self._clfPath = '../ml/models/glove100d_final.hdf5'
 
         self.model = load_model(self._clfPath)
         self.graph = tf.get_default_graph()
@@ -155,25 +155,22 @@ class CredibleResourcesModel(object):
         return self._tokenizer
 
     def fit_tokenizer(self):
-        X_train, X_test, y_train, y_test = train_test_split(self._train_data, self._train_labels, test_size=0.2, random_state=101)
-        X_train_headlines = [i[0] for i in X_train]
-        X_train_articles = [i[1] for i in X_train]
-        X_test_headlines = [i[0] for i in X_test]
-        X_test_articles = [i[1] for i in X_test]
-
-        max_features = 20000
-        tokenizer = Tokenizer(num_words=max_features)
-
-        # fit headline
-        tokenizer.fit_on_texts(X_train_headlines + X_train_articles)
-
+        import pickle
+        utils = pickle.load(open("../ml/models/utils.data", "rb"))
+        tokenizer = utils['tokenizer']
+        self.max_words_article = utils['max_words_article']
+        self.max_words_headline = utils['max_words_headline']
         # store tokenizer
         return tokenizer
 
-    def preprocess(self, tokenize_text, max_words):
+    def preprocess(self, tokenize_text, doc_type):
         # padding
         # max_words_headline = 70
         # max_words_article = 1000
+        if doc_type == 'headline':
+            max_words = self.max_words_headline
+        elif doc_type == 'body':
+            max_words = self.max_words_article
 
         text_seq = self._tokenizer.texts_to_sequences([tokenize_text])
         text_seq = sequence.pad_sequences(text_seq, maxlen=max_words)

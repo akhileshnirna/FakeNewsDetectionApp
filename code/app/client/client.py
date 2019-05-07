@@ -2,7 +2,7 @@ from flask import Flask, render_template, request
 import requests
 import json
 import os
-IMG_PATH = r'/home/aviral/Desktop/FND/FakeNewsDetectionApp/code/app/client/static/img'
+IMG_PATH = r'static/img/'
 
 app = Flask(__name__, template_folder='views', static_url_path='/static')
 app.debug = True
@@ -56,8 +56,8 @@ def fakeWebsite():
 	else:
 		return render_template('fakeWebsite.html')
 
-@app.route("/WebSpamCheck",methods=['POST', 'GET'])
-def WebSpamCheck():
+@app.route("/WebSpamCheckOld",methods=['POST', 'GET'])
+def WebSpamCheckOld():
 	if request.method == 'POST':
 		res = {}
 		data = request.form['url']
@@ -70,6 +70,31 @@ def WebSpamCheck():
 			res = r.json()
 			app.logger.info(res)
 			#print(res['data'])
+		return  json.dumps(res)
+	else:
+		return render_template('WebSpamCheck.html')
+
+@app.route("/WebSpamCheck",methods=['POST', 'GET'])
+def WebSpamCheck():
+	if request.method == 'POST':
+		res = {}
+		data = request.form['url']
+		app.logger.info(data)
+
+		r = requests.post(url = 'http://127.0.0.1:3001/spamcheck', data={"url": data})
+		if r.status_code != 200:
+			app.logger.error("Request has failed!")
+		else:
+			res['spam'] = r.json()
+			app.logger.info(res)
+		
+		r = requests.post(url = 'http://127.0.0.1:3001/websitecheck', data={"url": data})
+		if r.status_code != 200:
+			app.logger.error("Request has failed!")
+		else:
+			res['phising'] = r.json()
+			app.logger.info(res)
+		
 		return  json.dumps(res)
 	else:
 		return render_template('WebSpamCheck.html')

@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Fake Account Detection</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
     <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+
     <link rel="stylesheet" href="/static/timeline/css/style.css">
-	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet'
+        type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/fakeaccount.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/css/main.css">
 </head>
+
 <body>
-    	<!-- ====================================================
+    <!-- ====================================================
 	header section -->
     <header class="top-header">
         <div class="container">
@@ -26,27 +40,28 @@
                 <div class="col-md-7">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid nav-bar">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            </button>
-                        </div>
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                            <ul class="nav navbar-nav navbar-right">
-                            <li><a class="menu active" href="#home" >Home</a></li>
-                            <li><a class="menu" href="#about">about us</a></li>
-                            <li><a class="menu" href="#service">our services </a></li>
-                            <li><a class="menu" href="#team">our team</a></li>
-                            <li><a class="menu" href="#contact"> contact us</a></li>
-                            </ul>
-                        </div><!-- /navbar-collapse -->
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a class="menu active" href="#home">Home</a></li>
+                                    <li><a class="menu" href="#about">about us</a></li>
+                                    <li><a class="menu" href="#service">our services </a></li>
+                                    <li><a class="menu" href="#team">our team</a></li>
+                                    <li><a class="menu" href="#contact"> contact us</a></li>
+                                </ul>
+                            </div><!-- /navbar-collapse -->
                         </div><!-- / .container-fluid -->
                     </nav>
                 </div>
@@ -56,26 +71,29 @@
     <div class="header-backup"></div>
 
     <section class="about text-center">
-        <div class="container-fluid">
-			<div class="row">
-				<p style="font-size:22px;width=70%;align:center;">- This metric looks at tweet and analyzes the details of all the accounts that retweeted to detect which accounts are probable Spam account.
-				</p>
-				<br>
+        <div class="container-fluid" id="main">
+
+            <h2 style="color:black;">Fake Account Detection</h2>
             <div class="row">
-                <h2>Fake Account Detection</h2>
+                <p style="font-size:2em;"> This metric looks at tweet and analyzes the details of all the accounts that
+                    retweeted to detect which accounts are probable Spam account.
+                </p>
+                <div class="row">
 
-                <p>Enter A twitter Username</p>
-                <form id="fakeaccount" onsubmit="return false">
-                    <input type="text" name="user_name"  required/>
-                    <input type="submit" id="submitButton" value="Detect Fake Accounts" />
-					<button><a href="/static/docs/report.pdf#page=51">learn more</a></button>
-                </form>
-            </div>
-            <br>
-            <div id="tweet" style="font-size: 16px">
+                    <p style="font-size:1.25em;">Enter A twitter Username</p>
+                    <form id="fakeaccount" onsubmit="return false">
+                        <input type="text" name="user_name" required />
+                        <input type="submit" id="submitButton" value="Detect Fake Accounts" />
+                        <button><a href="/static/docs/report.pdf#page=51">learn more</a></button>
+                    </form>
+                </div>
+                <br>
+                <div id="tweet" style="font-size: 16px">
 
+                </div>
             </div>
         </div>
+
     </section>
     <br>
 
@@ -84,51 +102,108 @@
 
     </div>
 
+
+    <script src="/static/table/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/popper.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/table/vendor/select2/select2.min.js"></script>
+    <script src="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+    </script>
+    <script src="/static/table/js/main.js"></script>
+
+
     <script src="/static/timeline/js/main.js"></script>
     <script>
-        $('input#submitButton').click( function() {
-            $.post( '', $('form#fakeaccount').serialize(), function(data) {
+
+        $('input#submitButton').click(function () {
+            $.post('', $('form#fakeaccount').serialize(), function (data) {
                 var data = data[0];
 
-                var resultsDiv = $('div#resultsDiv');
-                resultsDiv.html(''); // Clear previous data
-                resultsDiv = $('<section class="cd-timeline js-cd-timeline col-lg-12 col-sm-12" id="results">').appendTo(resultsDiv);
+                var resultsDivMain = $('div#resultsDiv');
+                resultsDivMain.html(''); // Clear previous data
+                var resultsDiv = $('<section class="cd-timeline js-cd-timeline col-lg-7 col-sm-7" id="results-timeline">').appendTo(resultsDivMain);
+
+                var resultsTable = $('<div class="row col-lg-5 col-sm-5">');
+                resultsTable.appendTo(resultsDivMain);
+                var tableAccounts = $('<table class="table100 ver1 m-b-110 " style="display:inline;float:left;">');
+                tableAccounts.appendTo(resultsTable)
+                var div = $('<div class="table100-head">');
+                var div2 = $('<table>');
+                var tableAccountsHead = $('<thead>');
+                tableAccountsHead.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts);
+                var tr = $('<tr class="row100 head">');
+                $('<th class="cell100 column1">').text('Fake Account Name').appendTo(tr);
+                $('<th class="cell100 column2">').text('Fake Probability').appendTo(tr);
+                tr.appendTo(tableAccountsHead);
+
+                var div = $('<div class="table100-body js-pscroll">');
+                var div2 = $('<table>');
+                var tableAccountsBody = $('<tbody>');
+                tableAccountsBody.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts);
+
                 resultsDiv = $('<div class="container container--lg cd-timeline__container">').appendTo(resultsDiv);
-                resultsDiv = $('<div class="container container--lg cd-timeline__container">').appendTo(resultsDiv);
+                // $('<h3 class="col-centered" id="timeline-head">').text("Timeline").appendTo(resultsDiv);
+
+                // resultsDiv = $('<div class="container container--lg cd-timeline__container">').appendTo(resultsDiv);
 
                 $('div#tweet').html('');
                 $('<h3 style="font-size:24px">').text(data['tweet']).appendTo($('div#tweet'));
-                $('<hr>').appendTo($('div#tweet'));
+                $('<hr style="color: black;">').appendTo($('div#tweet'));
                 $('<p style="font-size:24px">').text('Fake News Probability : ' + data['fake_news_prob']).appendTo($('div#tweet'));
 
-                for (var i=0; i<data['retweeters'].length; i++) {
-                    var details = data['retweeters'][i];
+                for (var i = 0; i < data['retweeters'].length; i++) {
+                    var details = data['retweeters'][i]; 
                     var div = $('<div class="cd-timeline__block">');
                     var imgOpt, imgOptDiv;
-                    if (parseInt(details['isFake']) == 0){
+                    if (parseInt(details['isFake']) == 0) {
                         imgOpt = 'cd-icon-picture.svg';
                         imgOptDiv = 'picture';
                     } else {
                         imgOpt = 'cd-icon-movie.svg';
                         imgOptDiv = 'movie';
+                        var tr = $('<tr class="row100 body">');
+                        $(`<td class="cell100 column${1}">`).text(details['name']).appendTo(tr);
+                        $(`<td class="cell100 column${2}">`).text(1).appendTo(tr);
+                        tr.appendTo(tableAccountsBody);
                     }
                     $(`<div class="cd-timeline__img cd-timeline__img--${imgOptDiv}">`).appendTo(div);
-
-                    var textDiv = $('<div class="cd-timeline__content text-component">');
-                    $('<a style="font-size:22px">')
-                        .text(details['name'])
-                        .attr('title', '<h3 style="color:white">' +details['description']+ '</h3><br><p style="color:white">Followers: ' + details['followers'] +
-                                '<br>Following: '+details['following'])
-                        .attr('href', "https://twitter.com/"+details['name'])
-                        .appendTo(textDiv).tooltip({html: "true"});
-                     var flex = $('<div class="flex flex--space-between flex--center-y">');
-                    $('<span class="cd-timeline__date" style="font-size:12px">').text(data['time'][i]).appendTo(flex);
+                    var textDiv= $('<div class="cd-timeline__content text-component">')
+                        .bind('isVisible', function() {
+                            $(this).addClass("cd-timeline__content--bounce-in");
+                        })
+                        .show('slow', function() {
+                            $(this).trigger('isVisible');
+                        });
+                    
+                    $('<a style="font-size:18px">')
+                    .attr('title', '<h3 style="color:black;font-size:18px">' + details['description'] + '</h3><p style="color:white">Followers: ' + details['followers'] +
+                        '<br>Following: ' + details['following'] + '</p>')
+                    .attr('href', "https://twitter.com/" + details['name'])
+                    .text(details['name'])
+                    .tooltip({'html': true})
+                    .appendTo(textDiv);
+                    var flex = $('<div class="flex flex--space-between flex--center-y">');
+                    $('<span class="cd-timeline__date" style="font-size:14px">').text(data['time'][i]).appendTo(flex);
                     flex.appendTo(textDiv);
                     textDiv.appendTo(div);
                     div.appendTo(resultsDiv);
                 }
             },
-            'json'
+                'json'
             );
         });
     </script>

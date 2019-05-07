@@ -1,4 +1,4 @@
-table {
+/* table {
   border: 5px;
   border-color: black;
   width: 45%;
@@ -18,11 +18,37 @@ th {
 
 td {
   font-size: 20px;
+} */
+
+/* tr:nth-child(even) {background: #BEB9B5}
+tr:nth-child(odd) {background: #FEF6EB} */
+
+p {
+  color: white;
+  background-color:transparent;
 }
 
-tr:nth-child(even) {background: #BEB9B5}
-tr:nth-child(odd) {background: #FEF6EB}
-
 h2 {
-  font-size: 24px;
+  color:margin-top: 20px;
+  background-color:transparent;
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.page-contents{
+  margin-top: 50px;
+  /* position: absolute; */
+  /* background-color: transparent; */
+  /* display: relative; */
+  z-index: 2;
+  font-size: 2em;
+}
+
+tbody {
+  height: 100px;       /* Just for the demo          */
+  overflow-y: auto;    /* Trigger vertical scroll    */
+  overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+img {
+  border-radius: 5%;
 }

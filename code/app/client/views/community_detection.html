@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Community Detection</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
-    <script type="text/javascript" src="/static/js/lightbox.js" ></script>
-	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/static/js/lightbox.js"></script>
+
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+
+    <link rel="stylesheet" media="screen" href="/static/css/particle_js.css">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet'
+        type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="/static/css/community_detection.css" type='text/css'>
+    <link rel="stylesheet" href="/static/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/static/table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/css/main.css">
 </head>
+
 <body>
-    	<!-- ====================================================
-	header section -->
+
     <header class="top-header">
         <div class="container">
             <div class="row">
@@ -27,27 +41,28 @@
                 <div class="col-md-7">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid nav-bar">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            </button>
-                        </div>
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                            <ul class="nav navbar-nav navbar-right">
-                            <li><a class="menu active" href="#home" >Home</a></li>
-                            <li><a class="menu" href="#about">about us</a></li>
-                            <li><a class="menu" href="#service">our services </a></li>
-                            <li><a class="menu" href="#team">our team</a></li>
-                            <li><a class="menu" href="#contact"> contact us</a></li>
-                            </ul>
-                        </div><!-- /navbar-collapse -->
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a class="menu active" href="#home">Home</a></li>
+                                    <li><a class="menu" href="#about">about us</a></li>
+                                    <li><a class="menu" href="#service">our services </a></li>
+                                    <li><a class="menu" href="#team">our team</a></li>
+                                    <li><a class="menu" href="#contact"> contact us</a></li>
+                                </ul>
+                            </div><!-- /navbar-collapse -->
                         </div><!-- / .container-fluid -->
                     </nav>
                 </div>
@@ -56,42 +71,84 @@
     </header> <!-- end of header area -->
     <div class="header-backup"></div>
 
-    <section class="about text-center">
-        <div class="container-fluid" >
-			<div class="row">
-				<p style="font-size:22px;width=70%;align:center;" class="col-lg-6 col-sm-6">
-					- Social media is a predominant and influential source from where almost everyone learns about the ongoings in the world. Hence, it is a vulnerable area in which perpetrators can try spreading fake news.
-					- This metric is focused on identifying specific users belonging to such communities that might be spreading fake news.
-				</p>
-			</div>
+    <section class="page-contents text-center col-lg-12 col-sm-12">
+        <h2 style="font-size: 3em;">Community Detection</h2>
+        <br>
+        <div class="container-fluid">
+            <div class="row center-block">
+                <p style="font-size: 1em">
+                    Social media is a predominant and influential source from where almost everyone learns about the
+                    ongoings in the world. Hence, it is a vulnerable area in which perpetrators can try spreading fake
+                    news.
+                    <br>
+                    This metric is focused on identifying specific users belonging to such communities that might be
+                    spreading fake news.
+                </p>
+            </div>
 
-			<br>
+            <br>
             <div class="row">
-                <h2>Community Detection</h2>
-                <p>Enter A twitter Username</p>
+                <p style="font-size: 1em">Enter A twitter Username</p>
                 <form id="community" onsubmit="return false">
-                    <input type="text" name="user_name"  required/>
+                    <input type="text" name="user_name" required />
                     <input type="submit" id="submitButton" value="Detect Communities" />
-					<button><a href="/static/docs/report.pdf#page=54">learn more</a></button>
+                    <button><a href="/static/docs/report.pdf#page=54">learn more</a></button>
                 </form>
             </div>
         </div>
-    </section>
-    <div class="header-backup"></div>
-    <section class="about text-center">
-            <div class="container" id="results">
 
+        <div id="results" class="col-lg-12 col-sm-12 col-centered">
+
+        </div>
+        <br>
+        <br>
+        <br>
+    </section>
+
+    <section class="about text-center">
+        <div id="particle-js-container" class="text-center">
+            <!-- particles.js container -->
+
+            <div id="particles">
+                <link rel="stylesheet" media="screen" href="/static/css/particle_js.css">
             </div>
-        </section>
+            <div id="particles-js">
+            </div>
+
+            <!-- scripts -->
+            <script src="/static/js/particle_js.js"></script>
+            <script src="/static/js/particle_app.js"></script>
+
+        </div>
+    </section>
+
+    <script src="/static/table/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/popper.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/table/vendor/select2/select2.min.js"></script>
+    <script src="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+    </script>
+    <script src="/static/table/js/main.js"></script>
+
     <script>
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,
-            maxWidth: 1000,
-            maxHeight: 1000
+            maxWidth: 2000,
+            maxHeight: 2000
         });
-        $('input#submitButton').click( function() {
-            $.post( '', $('form#community').serialize(), function(data) {
+        $('input#submitButton').click(function () {
+            $.post('', $('form#community').serialize(), function (data) {
                 var resultsDiv = $('div#results');
                 // First we clear any previous output if present
                 resultsDiv.html('');
@@ -100,68 +157,100 @@
                 heading.attr('innerHTML', 'Output');
                 heading.appendTo(resultsDiv);
                 // Now we create a row in which all images will sit
-                var rowDiv = $('<div class="row">');
+                var rowDiv = $('<div class="row col-centered col-lg-12 col-sm-12">');
                 // Append the first image
                 var imageDiv = $('<div class="col-lg-6 col-sm-6"> id="img"');
                 var anchor = $('<a data-lightbox="roadtrip" data-title="Community Graph" href="/static/img/communities.png">');
-                // anchor.text('community_graph');
+                
                 dtime = new Date();
-                var img = $('<img id="community_graph" >'); //Equivalent: $(document.createElement('img'))
-                img.attr('src', "/static/img/communities.png?"+dtime.getTime());
-                img.height(500);
-                img.width(500);
+                var img = $('<img id="community_graph" >');
+                img.attr('src', "/static/img/communities.png?" + dtime.getTime());
+                img.height(550);
+                img.width(550);
                 img.appendTo(anchor);
                 anchor.appendTo(imageDiv);
                 imageDiv.appendTo(rowDiv);
                 // Append the second image
                 var imageDiv = $('<div class="col-lg-6 col-sm-6"> id="img"');
                 var anchor = $('<a data-lightbox="roadtrip" data-title="Connections Graph" href="/static/img/connections.png">');
-                var img = $('<img id="connection_graph">'); //Equivalent: $(document.createElement('img'))
-                img.attr('src', "/static/img/connections.png?"+dtime.getTime());
-                img.height(500);
-                img.width(500);
+                var img = $('<img id="connection_graph">');
+                img.attr('src', "/static/img/connections.png?" + dtime.getTime());
+                img.height(550);
+                img.width(550);
                 img.appendTo(anchor);
                 anchor.appendTo(imageDiv);
                 imageDiv.appendTo(rowDiv);
                 // Add row div to results div
                 rowDiv.appendTo(resultsDiv);
+
+                $('<br>').appendTo(resultsDiv);
+                $('<br>').appendTo(resultsDiv);
                 // Now create table and populate contents with fake community probabilities
-                var rowDiv = $('<div class="row">');
-                var tableAccounts = $('<table class="account-details col-lg-4 col-sm-4">');
-                $('<th width="100%">').text('Accounts Table').appendTo('<tr>').appendTo(tableAccounts);
-                var tableCommunities = $('<table class="community-details col-lg-4 col-sm-4">');
-                $('<th width="100%">').text('Communities Table').appendTo('<tr>').appendTo(tableCommunities);
+                var rowDiv = $('<div class="row col-centered col-lg-12 col-sm-12">');
+                
+                var tableAccounts = $('<table class="col-lg-5 col-sm-5  table100 ver1 m-b-110 " style="display:inline;float:left;">');
+                var div = $('<div class="table100-head">');
+                var div2 = $('<table>');
+                var tableAccountsHead =$('<thead>');
+                tableAccountsHead.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts);
 
-                var tr =$('<tr style="font-size:28px;color:#19260C;background-color:#7FBF3F">');
-                $('<td>').attr('align', 'center').text('Account Name').appendTo(tr);
-                $('<td>').text('Fake Probability').appendTo(tr);
-                tr.appendTo(tableAccounts);
+                var tr = $('<tr class="row100 head">');
+                $('<th class="cell100 column1">').text('Account Name').appendTo(tr);
+                $('<th class="cell100 column2">').text('Fake Probability').appendTo(tr);
+                tr.appendTo(tableAccountsHead);
+                
+                
+                var div = $('<div class="table100-body js-pscroll">');
+                var div2 = $('<table>');
+                var tableAccountsBody = $('<tbody>');
+                tableAccountsBody.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts)
+            
+                var tableCommunities = $('<table class="col-lg-5 col-sm-5 table100 ver1 m-b-110 " style="display:inline;float:right;">');
+                var div = $('<div class="table100-head">');
+                var div2 = $('<table>');
+                var tableCommunitiesHead =$('<thead>');
+                tableCommunitiesHead.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableCommunities);
 
-                var tr =$('<tr style="font-size:28px;color:#19260C;background-color:#7FBF3F">');
-                $('<td>').text('Account Name').appendTo(tr);
-                $('<td>').text('Fake Probability').appendTo(tr);
-                tr.appendTo(tableCommunities);
+                var tr = $('<tr class="row100 head">');
+                $('<th class="cell100 column1">').text('Community Number').appendTo(tr);
+                $('<th class="cell100 column2">').text('Fake Probability').appendTo(tr);
+                tr.appendTo(tableCommunitiesHead);
 
-                for(var i in data['communities']) {
-                    for(var j=0; j<data['communities'][i]['users'].length; j++) {
+                var div = $('<div class="table100-body js-pscroll">');
+                var div2 = $('<table>');
+                var tableCommunitiesBody = $('<tbody>');
+                tableCommunitiesBody.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableCommunities);
+
+                for (var i in data['communities']) {
+                    for (var j = 0; j < data['communities'][i]['users'].length; j++) {
                         var name = data['communities'][i]['users'][j];
                         var fake_prob = data['communities'][i]['fake_proba_list'][j];
-                        var tr = $('<tr>');
-                        $('<td>').text(name).appendTo(tr);
-                        $('<td>').text(fake_prob).appendTo(tr);
-                        tr.appendTo(tableAccounts);
+                        var tr = $('<tr class="row100 body">');
+
+                        $(`<td class="cell100 column${1}">`).text(name).appendTo(tr);
+                        $(`<td class="cell100 column${2}">`).text(fake_prob).appendTo(tr);
+                        tr.appendTo(tableAccountsBody);
                     }
-                    var tr = $('<tr>');
-                    $('<td>').text(i).appendTo(tr);
-                    $('<td>').text(data['communities'][i]['fake_proba']).appendTo(tr);
-                    tr.appendTo(tableCommunities);
+                    var tr = $('<tr class="row100 body">');
+                    $(`<td class="cell100 column${1}">`).text(i).appendTo(tr);
+                    $(`<td class="cell100 column${2}">`).text(data['communities'][i]['fake_proba']).appendTo(tr);
+                    tr.appendTo(tableCommunitiesBody);
                 }
+
                 tableAccounts.appendTo(rowDiv);
-                $('<p class="col-lg-4 col-sm-4">').appendTo(rowDiv);
                 tableCommunities.appendTo(rowDiv);
+
                 rowDiv.appendTo(resultsDiv);
             },
-            'json' // I expect a JSON response
+                'json' // I expect a JSON response
             );
         });
     </script>

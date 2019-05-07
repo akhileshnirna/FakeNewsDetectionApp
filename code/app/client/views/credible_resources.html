@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <title>Credible Resources</title>
     <script type="text/javascript" src="/static/js/jquery-3.4.0.js"></script>
-    <script type="text/javascript" src="/static/js/lightbox.js" ></script>
-	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
-	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <script type="text/javascript" src="/static/js/lightbox.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/static/table/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,800,700,300' rel='stylesheet'
+        type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=BenchNine:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css"/>
+    <link rel="stylesheet" href="/static/css/lightbox.css" type="text/css" />
     <link rel="stylesheet" href="/static/css/credible.css" type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/static/table/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/static/table/css/main.css">
 </head>
+
 <body>
-    	<!-- ====================================================
-	header section -->
     <header class="top-header">
         <div class="container">
             <div class="row">
@@ -27,27 +39,28 @@
                 <div class="col-md-7">
                     <nav class="navbar navbar-default">
                         <div class="container-fluid nav-bar">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            </button>
-                        </div>
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div>
 
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                            <ul class="nav navbar-nav navbar-right">
-                            <li><a class="menu active" href="#home" >Home</a></li>
-                            <li><a class="menu" href="#about">about us</a></li>
-                            <li><a class="menu" href="#service">our services </a></li>
-                            <li><a class="menu" href="#team">our team</a></li>
-                            <li><a class="menu" href="#contact"> contact us</a></li>
-                            </ul>
-                        </div><!-- /navbar-collapse -->
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a class="menu active" href="#home">Home</a></li>
+                                    <li><a class="menu" href="#about">about us</a></li>
+                                    <li><a class="menu" href="#service">our services </a></li>
+                                    <li><a class="menu" href="#team">our team</a></li>
+                                    <li><a class="menu" href="#contact"> contact us</a></li>
+                                </ul>
+                            </div><!-- /navbar-collapse -->
                         </div><!-- / .container-fluid -->
                     </nav>
                 </div>
@@ -58,32 +71,68 @@
     <br>
     <br>
 
-    <section class="about text-center">
-        <div class="container-fluid">
-            <div class="row">
-				<div class="row">
-					<p style="font-size:22px;width=70%;align:center;" class="col-lg-12 col-sm-12">
-						- This metric is based on the stance of articles published by reputable news sources and fact
-checking organizations.
-					</p>
-					<br>
-				</div>
-                <h2>Credible Resources Check</h2>
-                <p>Enter A statement</p>
-                <form id="credible" onsubmit="return false">
-                    <input type="text" name="claim"  required/>
+    <section class="about" >
+        <div class="row">
+                <h2 style="color:orangered;" class="text-center">Credible Resources Check</h2>
+                <div class="row" style="margin-left: 10%;">
+                    <ul style="font-size:22px;" class="col-lg-8 col-sm-8" type="square">
+                        <li>- Fake  news  is  tough  to  identify.  Many  ’facts’  are  highly
+                        complex  and  difficult  to  check,  or  exist  on  a  ’continuum
+                        of  truth’  or  are  compound  sentences  with  fact  and  fiction
+                        overlapping. </li>
+                        <li>- The best way to attack this problem is not through 
+                        fact  checking,  but  by  comparing  how  reputable  sources  feel
+                        about  a  claim.</li>
+                        <li>- The  aim  of  this  module  is  first  to  identify
+                        important keywords in the input article text, then to conduct a
+                        thorough search and collect all articles that may be relevant to
+                        them followed by establishing the credibility of the claim by
+                        understanding the stance of the articles published by certified
+                        news  outlets  on  the  same  topic.</li>
+                        <li>- Based  on  the  results  of  each article,  we  try  to  help  the  user  to  take  an  informed  decision
+                        on whether the article is a hoax or not.</li>
+                    </ul>
+                    <br>
+                </div>
+        <div class="row text-center ">
+                
+                <p style="font-size: 24px;">Enter A statement</p>
+                <form id="credible" onsubmit="return false" style="font-size: 24px">
+                    <textarea name="claim" class='col-lg-4 col-sm-4 col-centered'></textarea><br>
                     <input type="submit" id="submitButton" value="Fact Check" />
-					<button><a href="/static/docs/report.pdf#page=56">learn more</a></button>
-				</form>
+                    <button><a href="/static/docs/report.pdf#page=56">learn more</a></button>
+                </form>
             </div>
         </div>
     </section>
-    <div class="header-backup"></div>
+    <hr style="border-color: gray;">
+    <br>
     <section class="about text-center">
-            <div class="container" id="results">
+        <div class="container" id="results">
 
-            </div>
-        </section>
+        </div>
+    </section>
+
+
+
+    <script src="/static/table/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/popper.js"></script>
+    <script src="/static/table/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/table/vendor/select2/select2.min.js"></script>
+    <script src="/static/table/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            var ps = new PerfectScrollbar(this);
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+
+
+    </script>
+    <script src="/static/table/js/main.js"></script>
+
     <script>
         lightbox.option({
             'resizeDuration': 200,
@@ -91,8 +140,8 @@ checking organizations.
             maxWidth: 1000,
             maxHeight: 1000
         });
-        $('input#submitButton').click( function() {
-            $.post( '', $('form#credible').serialize(), function(data) {
+        $('input#submitButton').click(function () {
+            $.post('', $('form#credible').serialize(), function (data) {
                 data = data['results'];
                 if (!data.length) {
                     return;
@@ -104,32 +153,57 @@ checking organizations.
                 var heading = $("<h3 id='output'>");
                 heading.attr('innerHTML', 'Output');
                 heading.appendTo(resultsDiv);
-                // Now create table and populate contents with fake community probabilities
-                var tableResources = $('<table style="border:1px solid black; width: auto; height: auto;">');
-                var tr =$('<tr>');
-                $('<th>').text('Source').appendTo(tr);
-                $('<th>').text('Article Title').appendTo(tr);
-                $('<th>').text('ML Result').appendTo(tr);
-                $('<th>').text('Cortical Result (Jaccard cDistance)').appendTo(tr);
-                tr.appendTo(tableResources);
-                for(var i=0; i<data.length; i++) {
-                  var article = data[i];
-                  var tr = $("<tr>");
-                  var td1 = $("<td>");
-                  $('<a>').attr('href', article.source_url).text(article.source).appendTo(td1);
-                  var td2 = $("<td>");
-                  $('<a>').attr('href', article.article_url).text(article.article_title).appendTo(td2);
-                  var td3 = $("<td>").text(article.credibility_score);
-                  var td4 = $("<td>").text(article.cortical_semantic_score.jaccardDistance);
-                  td1.appendTo(tr);
-                  td2.appendTo(tr);
-                  td3.appendTo(tr);
-                  td4.appendTo(tr);
-                  tr.appendTo(tableResources);
+
+
+                var resultsTable = $('<div class="row col-lg-12 col-sm-12">');
+                resultsTable.appendTo(resultsDiv);
+                var tableAccounts = $('<table class="table100 ver1 m-b-110 " style="display:inline;float:left;">');
+                tableAccounts.appendTo(resultsTable)
+                var div = $('<div class="table100-head">');
+                var div2 = $('<table>');
+                var tableAccountsHead = $('<thead>');
+                tableAccountsHead.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts);
+                var tr = $('<tr class="row100 head">');
+                $('<th class="cell100 column1">').text('Article Title').appendTo(tr);
+                $('<th class="cell100 column2">').text('Source').appendTo(tr);
+                $('<th class="cell100 column3">').text('ML Result').appendTo(tr);
+                $('<th class="cell100 column4">').text('Cortical Result (Jaccard cDistance)').appendTo(tr);
+                tr.appendTo(tableAccountsHead);
+
+                var div = $('<div class="table100-body js-pscroll">');
+                var div2 = $('<table>');
+                var tableAccountsBody = $('<tbody>');
+                tableAccountsBody.appendTo(div2);
+                div2.appendTo(div);
+                div.appendTo(tableAccounts);
+
+                // // Now create table and populate contents with fake community probabilities
+                // var tableResources = $('<table style="border:1px solid black; width: auto; height: auto;">');
+                // var tr =$('<tr>');
+                // $('<th>').text('Source').appendTo(tr);
+                // $('<th>').text('Article Title').appendTo(tr);
+                // $('<th>').text('ML Result').appendTo(tr);
+                // $('<th>').text('Cortical Result (Jaccard cDistance)').appendTo(tr);
+                // tr.appendTo(tableResources);
+                for (var i = 0; i < data.length; i++) {
+                    var article = data[i];
+                    var tr = $('<tr class="row100 body">');
+                    var td1 = $('<td class="cell100 column1">');
+                    $('<a>').attr('href', article.source_url).text(article.source).appendTo(td1);
+                    var td2 = $('<td class="cell100 column2">');
+                    $('<a>').attr('href', article.article_url).text(article.article_title).appendTo(td2);
+                    var td3 = $('<td class="cell100 column3">').text(article.credibility_score);
+                    var td4 = $('<td class="cell100 column4">').text(article.cortical_semantic_score.jaccardDistance);
+                    td1.appendTo(tr);
+                    td2.appendTo(tr);
+                    td3.appendTo(tr);
+                    td4.appendTo(tr);
+                    tr.appendTo(tableAccountsBody);
                 }
-                tableResources.appendTo(resultsDiv);
             },
-            'json' // I expect a JSON response
+                'json' // I expect a JSON response
             );
         });
     </script>
