@@ -74,12 +74,14 @@ def fake_community_detection(docs):
         communities[community_num]['fake_proba_list'].append(str(fake_probabilty[0][0]))
 
     for community_num in communities:
-        prob = 1
+        prob = 0
         for p in communities[community_num]['fake_proba_list']:
-            prob *= float(p)
-        prob ** 1/len(communities[community_num]['fake_proba_list'])
+            prob += float(p)
+        if len(communities[community_num]['fake_proba_list']):
+            prob = prob / len(communities[community_num]['fake_proba_list'])
+        else:
+            prob=0
         communities[community_num]['fake_proba'] = str(prob)
-
     return communities
 
 

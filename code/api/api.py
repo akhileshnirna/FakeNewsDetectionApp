@@ -140,7 +140,10 @@ class WebSpamCheck(Resource):
             res['tld_infer'] = "Unsafe/Most Abused"
         else:
             res['tld_infer'] = "Safe"
-        res['txt_to_anch'] = (detector.getAllTextAnchors(url)/res['words_count']) * 100
+        if res['words_count']:
+            res['txt_to_anch'] = (detector.getAllTextAnchors(url)/res['words_count']) * 100
+        else:
+            res['txt_to_anch'] = (detector.getAllTextAnchors(url)/1) * 100
         print("Returning data: ", res)
         return res, 200
 

@@ -21,8 +21,15 @@ td {
 }
 
 tr:nth-child(even) {background: #BEB9B5} */
-tr:nth-child(odd) {background: #FEF6EB}
+/* tr:nth-child(odd) {background: #FEF6EB} */
 
 h2 {
   font-size: 24px;
+}
+
+#main{
+  background-color:whitesmoke;
+  margin-top: 20px 20px 20px 20px;
+  /* margin-bottom: 25px; */
+  padding: 50px;
 }

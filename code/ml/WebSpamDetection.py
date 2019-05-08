@@ -70,6 +70,8 @@ class WebSpamDetect():
     def getTitleLength(self,url):
         html = self.getRawHTMLData(url)
         soup = BeautifulSoup(html, "lxml")
+        if not soup.find("title"):
+            return 0
         title = soup.find("title").text
         tokens = title.strip().split()
         clean_tokens = [t for t in tokens if re.match(r'[^\W\d]*$', t)]

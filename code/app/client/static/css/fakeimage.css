@@ -2,3 +2,11 @@ img{
   width: 500px;
   height: 700px;
 }
+
+div#main {
+  background-color: lightgray;
+  border-radius: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+  padding-bottom: 10px;
+}

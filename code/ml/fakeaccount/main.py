@@ -44,7 +44,7 @@ class FakeAccountDetectionModel():
       return outputs
 
     def predictTweet(self, users_details):
-      fake_news_prob = 1
+      fake_news_prob = 0
       fake_users = []
       for user in users_details:
         details = {
@@ -56,13 +56,17 @@ class FakeAccountDetectionModel():
         user = self._parse_details_v2(user)
         user = self._scaler.transform(user)
         probabilities = self._classifier.predict_proba(user)
-        fake_news_prob *= probabilities[0][0]
+        fake_news_prob += probabilities[0][0]
         if np.argmax(probabilities[0]) == 0:
             details['isFake'] = 1
         else:
             details['isFake'] = 0
         fake_users.append(details)
-      return fake_news_prob ** (1/len(users_details)), fake_users
+      if len(users_details):
+        total_prob = fake_news_prob / len(users_details)
+      else:
+        total_prob = 0.45
+      return total_prob, fake_users
 
     def _parse_details_v2(self, user_details):
         """ Parses user details for prediction """

@@ -71,41 +71,67 @@
     <br>
     <br>
 
-    <section class="about" >
-        <div class="row">
-                <h2 style="color:orangered;" class="text-center">Credible Resources Check</h2>
-                <div class="row" style="margin-left: 10%;">
-                    <ul style="font-size:22px;" class="col-lg-8 col-sm-8" type="square">
-                        <li>- Fake  news  is  tough  to  identify.  Many  ’facts’  are  highly
-                        complex  and  difficult  to  check,  or  exist  on  a  ’continuum
-                        of  truth’  or  are  compound  sentences  with  fact  and  fiction
+    <section class="about">
+        <div class="row" id="main" style="height: 600px;">
+            <h2 style="color:orangered;" class="text-center">Credible Resources Check</h2>
+            <!-- <br> -->
+            <div class="row col-lg-8 col-sm-8" style="padding: 20px;">
+                <h3 style="color:goldenrod; font-size: 28px;text-align:center;" class="col-centered">Module Details</h3>
+                <ul style="font-size:22px;" type="square">
+                    <li>- Fake news is tough to identify. Many ’facts’ are highly
+                        complex and difficult to check, or exist on a ’continuum
+                        of truth’ or are compound sentences with fact and fiction
                         overlapping. </li>
-                        <li>- The best way to attack this problem is not through 
-                        fact  checking,  but  by  comparing  how  reputable  sources  feel
-                        about  a  claim.</li>
-                        <li>- The  aim  of  this  module  is  first  to  identify
+                    <li>- The best way to attack this problem is not through
+                        fact checking, but by comparing how reputable sources feel
+                        about a claim.</li>
+                    <li>- The aim of this module is first to identify
                         important keywords in the input article text, then to conduct a
                         thorough search and collect all articles that may be relevant to
                         them followed by establishing the credibility of the claim by
                         understanding the stance of the articles published by certified
-                        news  outlets  on  the  same  topic.</li>
-                        <li>- Based  on  the  results  of  each article,  we  try  to  help  the  user  to  take  an  informed  decision
+                        news outlets on the same topic.</li>
+                    <li>- Based on the results of each article, we try to help the user to take an informed decision
                         on whether the article is a hoax or not.</li>
-                    </ul>
-                    <br>
+                </ul>
+                <br>
+            </div>
+            <div class="row col-lg-4 col-sm-4" style="margin-left: 30px;">
+                <h3 style="color:goldenrod; font-size: 28px;text-align:center;" class="col-centered">Credible Sources
+                </h3>
+                <div class="table100 ver3 m-b-110" style="height: 300px;">
+                    <div class="table100-head">
+                        <table>
+                            <thead>
+                                <tr class="row100 head">
+                                    <th class="cell100 column1">Source Name</th>
+                                    <th class="cell100 column2">Source Type</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+                    <div class="table100-body js-pscroll">
+                        <table id="sources_table">
+                            <tbody id="sources_table_body">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-        <div class="row text-center ">
-                
-                <p style="font-size: 24px;">Enter A statement</p>
-                <form id="credible" onsubmit="return false" style="font-size: 24px">
-                    <textarea name="claim" class='col-lg-4 col-sm-4 col-centered'></textarea><br>
-                    <input type="submit" id="submitButton" value="Fact Check" />
-                    <button><a href="/static/docs/report.pdf#page=56">learn more</a></button>
-                </form>
             </div>
         </div>
+        <br>
+        <br>
+        <hr style="border-color: gray;">
+        <div class="row text-center ">
+            <p style="font-size: 24px;">Enter A statement</p>
+            <form id="credible" onsubmit="return false" style="font-size: 20px">
+                <textarea name="claim" class='col-lg-4 col-sm-4 col-centered'></textarea><br>
+                <input type="submit" id="submitButton" value="Fact Check" />
+                <button><a href="/static/docs/report.pdf#page=56">learn more</a></button>
+            </form>
+        </div>
     </section>
-    <hr style="border-color: gray;">
     <br>
     <section class="about text-center">
         <div class="container" id="results">
@@ -140,6 +166,126 @@
             maxWidth: 1000,
             maxHeight: 1000
         });
+        source_uri = [
+            'bbc.com',                          //# news
+            'blogs.wsj.com',
+            'npr.org',
+            'pbs.org',
+            'abcnews.go.com',
+            'cbsnews.com',
+            'nbcnews.com',
+            'apnews.com',
+            'edition.cnn.com',
+            'nytimes.com',
+            'nypost.com',
+            'washingtonpost.com',
+            'msnbc.com',
+            'theguardian.com',
+            'bloomberg.com',
+            'newyorker.com',
+            'politico.com',
+            'foxnews.com',
+            'huffingtonpost.com',
+            'economist.com',
+            'buzzfeednews.com',
+            'vox.com',
+            'reuters.com',
+            'in.reuters.com',
+            'forbes.com',
+            'ndtv.com',
+            'timesofindia.indiatimes.com',
+            'economictimes.indiatimes.com',
+            'ibtimes.co.in',
+            'huffingtonpost.in',
+            'indiatoday.in',
+            'foxsports.com',                    //# sports
+            'espn.com',
+            'nfl.com',
+            'cbssports.com',
+            'fifa.com',
+            'techcrunch.com',                   //# technology
+            'wired.com',
+            'lifehacker.com',
+            'macworld.com',
+            'pcworld.com',
+            'engadget.com',
+            'readwrite.com',
+            'mashable.com',
+            'gizmodo.com',
+            'venturebeat.com',
+            'recode.net',
+            'cnet.com',
+            'howtogeek.com',
+            'entrepreneur.com',                 //# business
+            'hbr.org',
+            'freakonomics.com',
+            'ritholtz.com',
+            'fortune.com',
+            'business-standard.com',
+            'businessinsider.com',
+            'foxbusiness.com',
+            'businesstimes.com.sg',
+            'factly.in',                       // # fact-checking
+            'factcheck.org',
+            'snopes.com',
+            'checkyourfact.com',
+            'politifact.com',
+            'thequint.com'
+        ]
+
+        for (var i = 0; i < source_uri.length; i++) {
+            var tr = $('<tr class="row100 body">');
+            $('<td class="cell100 column1">').html(`<a href="http://${source_uri[i]}">${source_uri[i]}</a>`).appendTo(tr);
+            if (i <= 30) {
+                $('<td class="cell100 column2" style="color:white">').text("News").appendTo(tr);
+            } else if (i <= 35) {
+                $('<td class="cell100 column2" style="color:white">').html("Sports").appendTo(tr);
+            } else if (i <= 48) {
+                $('<td class="cell100 column2" style="color:white">').html("Technology").appendTo(tr);
+            } else if (i <= 57) {
+                $('<td class="cell100 column2" style="color:white">').html("Business").appendTo(tr);
+            } else {
+                $('<td class="cell100 column2" style="color:white">').html("Fact-Checking").appendTo(tr);
+            }
+            tr.appendTo($('#sources_table_body'));
+        }
+        (function ($) {
+            //Shuffle all rows, while keeping the first column
+            //Requires: Shuffle
+            $.fn.shuffleRows = function () {
+                return this.each(function () {
+                    var main = $(/table/i.test(this.tagName) ? this.tBodies[0] : this);
+                    var firstElem = [], counter = 0;
+                    main.children().each(function () {
+                        firstElem.push(this.firstChild);
+                    });
+                    main.shuffle();
+                    main.children().each(function () {
+                        this.insertBefore(firstElem[counter++], this.firstChild);
+                    });
+                });
+            }
+            /* Shuffle is required */
+            $.fn.shuffle = function () {
+                return this.each(function () {
+                    var items = $(this).children();
+                    return (items.length)
+                        ? $(this).html($.shuffle(items))
+                        : this;
+                });
+            }
+
+            $.shuffle = function (arr) {
+                for (
+                    var j, x, i = arr.length; i;
+                    j = parseInt(Math.random() * i),
+                    x = arr[--i], arr[i] = arr[j], arr[j] = x
+                );
+                return arr;
+            }
+        })(jQuery)
+        $('#sources_table').shuffleRows();
+
         $('input#submitButton').click(function () {
             $.post('', $('form#credible').serialize(), function (data) {
                 data = data['results'];
@@ -191,9 +337,9 @@
                     var article = data[i];
                     var tr = $('<tr class="row100 body">');
                     var td1 = $('<td class="cell100 column1">');
-                    $('<a>').attr('href', article.source_url).text(article.source).appendTo(td1);
+                    $('<a>').attr('href', article.article_url).text(article.article_title).appendTo(td1);
                     var td2 = $('<td class="cell100 column2">');
-                    $('<a>').attr('href', article.article_url).text(article.article_title).appendTo(td2);
+                    $('<a>').attr('href', article.source_url).text(article.source).appendTo(td2);
                     var td3 = $('<td class="cell100 column3">').text(article.credibility_score);
                     var td4 = $('<td class="cell100 column4">').text(article.cortical_semantic_score.jaccardDistance);
                     td1.appendTo(tr);

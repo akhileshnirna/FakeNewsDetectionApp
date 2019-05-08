@@ -20,10 +20,10 @@ def viz_graph(G, save_graph=False, file_name='connections.png'):
     plt.figure(num=None, figsize=(12,12), dpi=200)
     plt.tight_layout()
     pos = nx.spring_layout(G)
-    nx.draw_networkx_nodes(G, pos, node_size=400)
+    nx.draw_networkx_nodes(G, pos, node_size=800)
     nx.draw_networkx_edges(G, pos, edgelist=G.edges(),
                        width=2)
-    nx.draw_networkx_labels(G, pos, font_size=10, font_family='sans-serif')
+    nx.draw_networkx_labels(G, pos, font_size=16, font_family='sans-serif')
     plt.axis('off')
     plt.title("Connections")
     if save_graph:
